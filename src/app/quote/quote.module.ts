@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { QuoteContainerComponent, QuoteComponent } from './components';
+import { NgxsModule } from '@ngxs/store';
 
+import { QuoteContainerComponent, QuoteComponent } from './components';
 import { QuoteRoutingModule } from './quote-routing.module';
+import { QuoteState } from './state';
 
 const COMPONENTS = [
   QuoteContainerComponent,
@@ -16,7 +18,8 @@ const COMPONENTS = [
   ],
   imports: [
     CommonModule,
-    QuoteRoutingModule
+    QuoteRoutingModule,
+    NgxsModule.forFeature([ QuoteState ]),
   ],
 })
 export class QuoteModule { }

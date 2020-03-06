@@ -1,4 +1,6 @@
-<blockquote>
-  {{ quote.text }}
-  <cite>&copy;{{ quote.author }}</cite>
-</blockquote>
+<ng-container *ngIf="quote">
+  <blockquote>
+    {{ quote.text }}
+    <cite>&copy;{{ quote.author }}</cite>
+  </blockquote>
+</ng-container>

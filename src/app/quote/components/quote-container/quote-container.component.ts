@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
-import { QuoteService } from '../../services';
 import { Quote } from '../../models';
+import { QuoteStoreFacade } from '../../state';
 
 @Component({
   selector: 'app-quote-container',
@@ -12,16 +13,16 @@ import { Quote } from '../../models';
 })
 export class QuoteContainerComponent implements OnInit {
 
-  quote$: Observable<Quote>;
+  quote$: Observable<Quote> = this.quoteStoreFacade.quote$.pipe(filter<Quote>(Boolean));
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private quoteStoreFacade: QuoteStoreFacade) { }
 
   ngOnInit(): void {
     this.getRandomQuote();
   }
 
   getRandomQuote(): void {
-    this.quote$ = this.quoteService.getRandom();
+    this.quoteStoreFacade.getQuote();
   }
 
 }

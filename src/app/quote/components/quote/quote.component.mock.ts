@@ -4,9 +4,8 @@ import { Quote } from '../../models';
 
 @Component({
   selector: 'app-quote',
-  templateUrl: './quote.component.html',
-  styleUrls: ['./quote.component.scss']
+  template: '',
 })
-export class QuoteComponent {
+export class MockQuoteComponent {
   @Input() quote: Quote;
 }
