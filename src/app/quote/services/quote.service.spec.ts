@@ -1,12 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
-import { QuoteService } from './quote.service';
+import { QuoteService, QUOTESY } from './quote.service';
 
 describe('QuoteService', () => {
   let service: QuoteService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [{ provide: QUOTESY, useValue: { random() {} } }],
+    });
     service = TestBed.inject(QuoteService);
   });
 
