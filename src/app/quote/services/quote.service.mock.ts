@@ -3,19 +3,19 @@ import { Observable, of } from 'rxjs';
 import { Quote } from '../models';
 import { QuoteService, QUOTESY } from './quote.service';
 
-export class QuoteServiceMock {
+export class MockQuoteService {
 
   getRandom(): Observable<Quote> {
     return of({} as Quote);
   }
 }
 
-export const quoteServiceMockProvider = {
+export const mockQuoteServiceProvider = {
   provide: QuoteService,
-  useClass: QuoteServiceMock,
+  useClass: MockQuoteService,
 };
 
-export const quotesyMockProvider = {
+export const mockQuotesyProvider = {
   provide: QUOTESY,
   useValue: { random() {} },
 };

@@ -7,6 +7,6 @@ import { Quote } from '../../models';
   templateUrl: './quote.component.html',
   styleUrls: ['./quote.component.scss']
 })
-export class QuoteComponentMock {
+export class MockQuoteComponent {
   @Input() quote: Quote;
 }
