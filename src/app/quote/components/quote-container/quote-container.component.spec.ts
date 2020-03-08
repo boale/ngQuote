@@ -12,7 +12,7 @@ describe('QuoteContainerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ QuoteContainerComponent, MockQuoteComponent ],
-      providers: [ mockQuoteServiceProvider ]
+      providers: [ mockQuoteServiceProvider ],
     })
     .compileComponents();
   }));

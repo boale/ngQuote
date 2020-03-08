@@ -1,13 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { QuoteContainerComponent, QuoteComponent } from './components';
+import { QuoteComponent, QuoteContainerComponent } from './components';
 
 import { QuoteRoutingModule } from './quote-routing.module';
 
 const COMPONENTS = [
   QuoteContainerComponent,
-  QuoteComponent
+  QuoteComponent,
 ];
 
 @NgModule({
@@ -16,7 +16,7 @@ const COMPONENTS = [
   ],
   imports: [
     CommonModule,
-    QuoteRoutingModule
+    QuoteRoutingModule,
   ],
 })
 export class QuoteModule { }

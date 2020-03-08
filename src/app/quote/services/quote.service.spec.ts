@@ -8,7 +8,7 @@ describe('QuoteService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ mockQuotesyProvider ]
+      providers: [ mockQuotesyProvider ],
     });
     service = TestBed.inject(QuoteService);
   });
