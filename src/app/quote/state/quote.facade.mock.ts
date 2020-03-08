@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { Quote } from '../models';
 import {QuoteStoreFacade} from './quote.facade';
 
-export class MockQuoteStoreFacade {
+export class QuoteStoreFacadeMock {
 
   quote$: Observable<Quote> = of({} as Quote);
 
@@ -11,7 +11,7 @@ export class MockQuoteStoreFacade {
 
 }
 
-export const mockQuoteStoreFacadeProvider = {
+export const quoteStoreFacadeMockProvider = {
   provide: QuoteStoreFacade,
-  useClass: MockQuoteStoreFacade,
+  useClass: QuoteStoreFacadeMock,
 };
