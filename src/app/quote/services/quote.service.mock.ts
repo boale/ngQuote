@@ -5,23 +5,26 @@ import { Observable, of } from 'rxjs';
 import quotesy from 'quotesy';
 
 import { Quote } from '../models';
+import {QuoteService} from './quote.service';
 
 export const QUOTESY = new InjectionToken('QUOTESY', {
   providedIn: 'root',
   factory: () => quotesy },
 );
 
-@Injectable({
-  providedIn: 'root'
-})
-export class QuoteService {
-
-  constructor(@Inject(QUOTESY) private quotes: any) {
-  }
+export class QuoteServiceMock {
 
   getRandom(): Observable<Quote> {
-    const randomQuote = this.quotes.random() as Quote;
-
-    return of(randomQuote);
+    return of({} as Quote);
   }
 }
+
+export const quotesyMockProvider = {
+  provide: QUOTESY,
+  useValue: { random() {}, },
+};
+
+export const quoteServiceMockProvider = {
+  provide: QuoteService,
+  useClass: QuoteServiceMock,
+};

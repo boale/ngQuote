@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { mockQuoteStoreFacadeProvider } from '../../store/quote.facade.mock';
+import { quoteStoreFacadeMockProvider } from '../../store/quote.facade.mock';
 
-import { MockQuoteComponent } from '../quote/quote.component.mock';
+import { QuoteComponentMock } from '../quote/quote.component.mock';
 
 import { QuoteContainerComponent } from './quote-container.component';
 
@@ -12,8 +12,8 @@ describe('QuoteContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuoteContainerComponent, MockQuoteComponent ],
-      providers: [ mockQuoteStoreFacadeProvider ],
+      declarations: [ QuoteContainerComponent, QuoteComponentMock ],
+      providers: [ quoteStoreFacadeMockProvider ],
     })
     .compileComponents();
   }));
