@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { QuoteService } from './quote.service';
+import { quotesyMockProvider } from './quote.service.mock';
 
 describe('QuoteService', () => {
   let service: QuoteService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [ quotesyMockProvider ]
+    });
     service = TestBed.inject(QuoteService);
   });
 

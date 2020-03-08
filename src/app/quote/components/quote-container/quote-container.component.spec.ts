@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { quoteServiceMockProvider } from '../../services/quote.service.mock';
+import { QuoteComponentMock } from '../quote/quote.component.mock';
+
 import { QuoteContainerComponent } from './quote-container.component';
 
 describe('QuoteContainerComponent', () => {
@@ -8,7 +11,8 @@ describe('QuoteContainerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuoteContainerComponent ]
+      declarations: [ QuoteContainerComponent, QuoteComponentMock ],
+      providers: [ quoteServiceMockProvider ]
     })
     .compileComponents();
   }));
