@@ -8,6 +8,7 @@
     "build:prod": "ng run build -- --configuration=production",
     "release": "standard-version",
     "test": "ng test --noWatch",
+    "test:coverage": "npm test -- --codeCoverage",
     "test:watch": "ng test",
     "lint": "ng lint",
     "lint:fix": "npm run lint -- --fix",
