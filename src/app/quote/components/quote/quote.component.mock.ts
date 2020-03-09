@@ -6,6 +6,6 @@ import { Quote } from '../../models';
   selector: 'app-quote',
   template: '',
 })
-export class QuoteComponentMock {
+export class MockQuoteComponent {
   @Input() quote: Quote;
 }

@@ -1,12 +1,11 @@
-import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { Quote } from '../models';
-
 import { QuoteService } from '../services';
 
 import * as quoteActions from './quote.actions';

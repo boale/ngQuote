@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import {Select, Store} from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 
 import { Quote } from '../models';
 

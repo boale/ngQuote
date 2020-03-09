@@ -5,8 +5,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "build:prod": "ng run build -- --configuration=production",
+    "release": "standard-version",
+    "test": "ng test --noWatch",
+    "test:coverage": "npm test -- --codeCoverage",
+    "test:watch": "ng test",
     "lint": "ng lint",
+    "lint:fix": "npm run lint -- --fix",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -22,6 +27,7 @@
     "@ngxs/logger-plugin": "^3.6.2",
     "@ngxs/router-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2",
+    "husky": "^4.2.3",
     "quotesy": "^1.0.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
@@ -32,6 +38,8 @@
     "@angular/cli": "~9.0.4",
     "@angular/compiler-cli": "~9.0.3",
     "@angular/language-service": "~9.0.3",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@ngxs/devtools-plugin": "^3.6.2",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
@@ -45,8 +53,16 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
     "protractor": "~5.4.3",
+    "standard-version": "^7.1.0",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
   }
 }

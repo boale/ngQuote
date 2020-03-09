@@ -9,7 +9,7 @@ import { QuoteStoreFacade } from '../../state';
 @Component({
   selector: 'app-quote-container',
   templateUrl: './quote-container.component.html',
-  styleUrls: ['./quote-container.component.scss']
+  styleUrls: [ './quote-container.component.scss' ],
 })
 export class QuoteContainerComponent implements OnInit {
 

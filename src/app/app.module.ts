@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { NgxsModule } from '@ngxs/store';
-import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsModule } from '@ngxs/store';
 
 import { environment } from '../environments/environment';
 
@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
 
     NgxsModule.forRoot([], {
-      developmentMode: !environment.production
+      developmentMode: !environment.production,
     }),
     NgxsLoggerPluginModule.forRoot(),
     NgxsRouterPluginModule.forRoot(),

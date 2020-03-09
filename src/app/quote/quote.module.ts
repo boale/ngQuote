@@ -1,15 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { NgxsModule } from '@ngxs/store';
 
-import { QuoteContainerComponent, QuoteComponent } from './components';
+import { QuoteComponent, QuoteContainerComponent } from './components';
 import { QuoteRoutingModule } from './quote-routing.module';
 import { QuoteState } from './state';
 
 const COMPONENTS = [
   QuoteContainerComponent,
-  QuoteComponent
+  QuoteComponent,
 ];
 
 @NgModule({
