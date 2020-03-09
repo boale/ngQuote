@@ -96,6 +96,7 @@
     ],
     "no-redundant-jsdoc": false,
     "no-use-before-declare": true,
+    "no-unused-variable": true,
     "object-literal-shorthand": true,
     "trailing-comma": [
       true,
