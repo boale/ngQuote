@@ -1,5 +1,19 @@
 # QuoteApp
 
+###TODO:
+
+upd tslint config
+add husky
+add commitlint and standard version
+configure git hooks
+add e2e test
+add build specs
+add cloudfront/cloudformation files
+
+configure pipelines
+release
+deploy
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
 
 ## Development server

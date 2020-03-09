@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Quote } from '../../models';
-
 import { QuoteComponent } from './quote.component';
 
 describe('QuoteComponent', () => {
@@ -15,7 +14,7 @@ describe('QuoteComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuoteComponent ]
+      declarations: [ QuoteComponent ],
     })
     .compileComponents();
   }));

@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {Actions, createEffect, ofType} from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import {map, switchMap} from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
-import {Quote} from '../models';
+import { Quote } from '../models';
 import { QuoteService } from '../services';
 
 import { getQuote, setQuote } from './quote.actions';
@@ -16,7 +16,7 @@ export class QuoteEffects {
     return this.actions$.pipe(
       ofType(getQuote),
       switchMap(() => this.quoteService.getRandom()),
-      map((quote: Quote) => setQuote({ quote }))
+      map((quote: Quote) => setQuote({ quote })),
     );
   });
 

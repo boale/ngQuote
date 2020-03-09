@@ -2,7 +2,7 @@ import { of } from 'rxjs';
 
 import { QuoteStoreFacade } from './quote.facade';
 
-export class QuoteStoreFacadeMock {
+export class MockQuoteStoreFacade {
 
   quote$ = of({});
 
@@ -10,4 +10,7 @@ export class QuoteStoreFacadeMock {
 
 }
 
-export const quoteStoreFacadeMockProvider = { provide: QuoteStoreFacade, useClass: QuoteStoreFacadeMock };
+export const mockQuoteStoreFacadeProvider = {
+  provide: QuoteStoreFacade,
+  useClass: MockQuoteStoreFacade,
+};

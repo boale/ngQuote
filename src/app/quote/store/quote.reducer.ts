@@ -1,7 +1,10 @@
-import { createReducer, on, Action } from '@ngrx/store';
+import { Action, createReducer, on } from '@ngrx/store';
+
+import * as fromRoot from '../../store';
+
+import { Quote } from '../models';
 
 import * as QuoteActions from './quote.actions';
-import {Quote} from '../models';
 
 export const quoteFeatureKey = 'quote';
 
@@ -10,12 +13,9 @@ export interface QuoteState {
   loading?: boolean;
   loaded?: boolean;
 }
-
 export interface State extends fromRoot.State {
   [quoteFeatureKey]: QuoteState;
 }
-import * as fromRoot from '../../store';
-
 
 export const initialState: QuoteState = {
   quote: null,

@@ -1,30 +1,21 @@
-import {Inject, Injectable, InjectionToken} from '@angular/core';
-
 import { Observable, of } from 'rxjs';
 
-import quotesy from 'quotesy';
-
 import { Quote } from '../models';
-import {QuoteService} from './quote.service';
+import { QuoteService, QUOTESY } from './quote.service';
 
-export const QUOTESY = new InjectionToken('QUOTESY', {
-  providedIn: 'root',
-  factory: () => quotesy },
-);
-
-export class QuoteServiceMock {
+export class MockQuoteService {
 
   getRandom(): Observable<Quote> {
     return of({} as Quote);
   }
 }
 
-export const quotesyMockProvider = {
+export const mockQuotesyProvider = {
   provide: QUOTESY,
-  useValue: { random() {}, },
+  useValue: { random() {} },
 };
 
-export const quoteServiceMockProvider = {
+export const mockQuoteServiceProvider = {
   provide: QuoteService,
-  useClass: QuoteServiceMock,
+  useClass: MockQuoteService,
 };

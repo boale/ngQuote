@@ -1,8 +1,8 @@
-import {createFeatureSelector, createSelector} from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { Quote } from '../models';
 
-import { quoteFeatureKey, State, QuoteState } from './quote.reducer';
+import { quoteFeatureKey, QuoteState, State } from './quote.reducer';
 
 const quoteFeatureState = createFeatureSelector<State, QuoteState>(quoteFeatureKey);
 

@@ -1,4 +1,4 @@
-import {Inject, Injectable, InjectionToken} from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
@@ -8,11 +8,11 @@ import { Quote } from '../models';
 
 export const QUOTESY = new InjectionToken('QUOTESY', {
   providedIn: 'root',
-  factory: () => quotesy },
-);
+  factory: () => quotesy,
+});
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class QuoteService {
 

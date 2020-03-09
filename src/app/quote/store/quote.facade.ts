@@ -1,15 +1,16 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { select, Store} from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 
-import {Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
+
+import { Quote } from '../models';
 
 import { getQuote } from './quote.actions';
-import * as selectors from './quote.selectors';
 import { State } from './quote.reducer';
-import { Quote } from '../models';
-import * as s from '../../store';
+import * as selectors from './quote.selectors';
+
 @Injectable({ providedIn: 'root' })
 export class QuoteStoreFacade {
 

@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { QuoteService } from '../../services';
 import { Quote } from '../../models';
-import {QuoteStoreFacade} from '../../store/quote.facade';
+import { QuoteStoreFacade } from '../../store';
 
 @Component({
   selector: 'app-quote-container',
   templateUrl: './quote-container.component.html',
-  styleUrls: ['./quote-container.component.scss']
+  styleUrls: ['./quote-container.component.scss'],
 })
 export class QuoteContainerComponent implements OnInit {
 

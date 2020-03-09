@@ -1,5 +1,5 @@
-import {createAction, props} from '@ngrx/store';
-import {Quote} from '../models';
+import { createAction, props } from '@ngrx/store';
+import { Quote } from '../models';
 
 enum ActionType {
   getQuote = '[Quote] get quote',
