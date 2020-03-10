@@ -1,20 +1,25 @@
 # QuoteApp
 
+[![DeepScan grade](https://deepscan.io/api/teams/7984/projects/10118/branches/135987/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7984&pid=10118&bid=135987)
+[![Maintainability](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/maintainability)](https://codeclimate.com/github/boale/ngQuote/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/test_coverage)](https://codeclimate.com/github/boale/ngQuote/test_coverage)
+
+Angular-based Quote generator with all necessary CI/CD configurations. 
+
+Also it has basic integrations with Ngrx or Ngxs stores (see `feature/ngrxStore` or `feature/ngxsStore` respectively). 
+
 ###TODO:
 
-upd tslint config
-add husky
-add commitlint and standard version
-configure git hooks
-add e2e test
-add build specs
-add cloudfront/cloudformation files
-
-configure pipelines
-release
-deploy
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.4.
+- add e2e test
+- add test coverage to reach required threshold
+- add integration with: 
+  - codecov.io (https://codecov.io/gh/boale/ngQuote) for test coverage reports
+  - codeclimate.com (https://codeclimate.com/github/boale/ngQuote) for test coverage reports
+- configure AWS CI/CD pipelines:
+    - add build specs
+    - add cloudformation.yaml files
+    - release
+    - deploy
 
 ## Development server
 
@@ -26,7 +31,8 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Use the `--prod` flag for a production build or `npm run build:prod` command.
 
 ## Running unit tests
 
