@@ -1,0 +1,16 @@
+@import './reset';
+@import './fonts';
+@import './icons';
+@import './variables';
+
+body {
+  font-family: $font, $font__primary, $font__fallback;
+  height: 100%;
+  width: 100%;
+  //font-size: 100%;
+  line-height: 1;
+  font-size: $font__size;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}

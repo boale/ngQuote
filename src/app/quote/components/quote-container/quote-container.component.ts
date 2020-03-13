@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { QuoteService } from '../../services';
   selector: 'app-quote-container',
   templateUrl: './quote-container.component.html',
   styleUrls: ['./quote-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteContainerComponent implements OnInit {
 

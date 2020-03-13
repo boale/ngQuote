@@ -1,7 +1,13 @@
 <ng-container *ngIf="quote">
-  <blockquote>
-    {{ quote.text }}
-    <cite>&copy;{{ quote.author }}</cite>
-  </blockquote>
+  <div class="quote">
+    <div class="quote__inner">
+      <blockquote class="quote__blockquote">
+        <p>
+          {{ quote.text }}
+        </p>
+        <cite>&copy;{{ quote.author }}</cite>
+      </blockquote>
+    </div>
+  </div>
 </ng-container>
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Quote } from '../../models';
 
@@ -6,6 +6,8 @@ import { Quote } from '../../models';
   selector: 'app-quote',
   templateUrl: './quote.component.html',
   styleUrls: ['./quote.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
 })
 export class QuoteComponent {
   @Input() quote: Quote;

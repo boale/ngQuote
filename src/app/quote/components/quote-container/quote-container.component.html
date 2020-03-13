@@ -1,3 +1,7 @@
 <app-quote [quote]="quote$ | async"></app-quote>
 
-<button (click)="getRandomQuote()">Get another Quote</button>
+<button
+  class="get-quote-btn"
+  title="Get another Quote"
+  (click)="getRandomQuote()"
+></button>
