@@ -1,0 +1,54 @@
+version: 0.2
+
+env:
+    variables:
+        CACHE_CONTROL: 86400
+        BUILD_ENV: test
+        S3_BUCKET: quote-app-prod
+        # CLOUDFRONT_ID: ""
+        # CODE_CLIMATE_REPORTER_ID: ""
+        # COVERAGE_REPORT_PATH: "coverage/lcov.info"
+        # CODECOV_TOKEN: ""
+        # CODECOV_COVERAGE_REPORT_PATH: "coverage/coverage-final.json"
+
+phases:
+    install:
+        runtime-versions:
+          nodejs: 12.x
+
+        commands:
+            - apt-get update -y -q
+            - echo Installing source NPM dependencies...
+            - npm install -g @angular/cli
+            - npm install
+
+    pre_build:
+        commands:
+            - echo Running code quality checks...
+            - npm run lint
+            - npm run test:coverage
+            # - upload test coverage report using ${COVERAGE_REPORT_PATH}
+            # - bash <(curl -s https://codecov.io/bash) -t ${CODECOV_TOKEN} -f ${CODECOV_COVERAGE_REPORT_PATH}
+
+    build:
+        commands:
+            # Builds Angular application.
+            - echo Build started on `date`
+            - npm run build:prod
+
+    post_build:
+         commands:
+            # Clear S3 bucket.
+            - aws s3 rm s3://${S3_BUCKET} --recursive
+            - echo S3 bucket is cleared.
+            # Copy dist folder to S3 bucket
+            - aws s3 cp dist s3://${S3_BUCKET} --recursive
+            # STEP: Clear CloudFront cache.
+            - aws configure set preview.cloudfront true
+            - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
+
+artifacts:
+    files:
+        - '**/*'
+    base-directory: 'dist*'
+    discard-paths: yes
