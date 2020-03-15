@@ -5,32 +5,29 @@ $max-width: 1100px;
 .quote {
   max-width: $max-width;
 
-  &__inner {
+  &__blockquote {
     position: relative;
     margin: 0 auto;
     padding: 190px 190px 190px;
-  }
 
-  &__inner::before,
-  &__inner::after {
+    &::before,
+    &::after {
     font-family: $font__icons;
     position: absolute;
     font-size: 150px;
     opacity: 0.5;
   }
-
-  &__inner::before {
-    content: '\275d';
-    left: 0;
-    top: 0;
+    &::before {
+      content: '\275d';
+      left: 0;
+      top: 0;
+    }
+    &::after{
+      content: '\e800';
+      right: 0;
+      bottom: 0;
+    }
   }
-
-  &__inner::after {
-    content: '\e800';
-    right: 0;
-    bottom: 0;
-  }
-
   &__blockquote p {
     font-size: 40px;
     text-align: justify;
@@ -44,5 +41,4 @@ $max-width: 1100px;
     text-align: right;
     display: block;
   }
-
 }
