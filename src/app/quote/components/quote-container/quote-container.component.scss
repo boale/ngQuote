@@ -14,9 +14,13 @@
 
 .get-quote-btn {
   position: absolute;
-  right: 165px;
+  right: 80px;
   top: 120px;
   width: 36px;
   height: 36px;
   background: url('assets/static/01.svg') no-repeat center center;
+  @media screen and (max-width:620px){
+    right: 10px;
+    top: 20px;
+  }
 }
