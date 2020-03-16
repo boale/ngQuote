@@ -1,0 +1,31 @@
+@import './variables';
+
+@mixin md {
+  @media (max-width: $breakpoint__md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: $breakpoint__lg) {
+    @content;
+  }
+}
+
+@mixin md_l {
+  @media (max-width: $breakpoint__md_l) {
+    @content;
+  }
+}
+
+@mixin md_s {
+  @media (max-width: $breakpoint__md_s) {
+    @content;
+  }
+}
+
+@mixin sm_l {
+  @media (max-width: $breakpoint__sm_l) {
+    @content;
+  }
+}

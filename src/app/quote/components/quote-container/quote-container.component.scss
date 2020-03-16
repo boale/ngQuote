@@ -1,4 +1,7 @@
+@import "~scss/mixins";
 @import "~scss/variables";
+
+$btn-size: 36px;
 
 :host {
   width: 100%;
@@ -16,10 +19,11 @@
   position: absolute;
   right: 80px;
   top: 120px;
-  width: 36px;
-  height: 36px;
+  width: $btn-size;
+  height: $btn-size;
   background: url('assets/static/01.svg') no-repeat center center;
-  @media screen and (max-width:620px){
+
+  @include md_s {
     right: 10px;
     top: 20px;
   }

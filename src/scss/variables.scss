@@ -9,3 +9,11 @@ $font__icons: 'icons';
 $color__black: #000000;
 $color__white: #ffffff;
 $color__blue: #8acbd6;
+
+// breakpoints
+$breakpoint__sm: 320px;
+$breakpoint__sm_l: 480px; // 500px
+$breakpoint__md_s: 620px;
+$breakpoint__md: 768px;
+$breakpoint__md_l: 1080px; // 920px
+$breakpoint__lg: 1280px;
