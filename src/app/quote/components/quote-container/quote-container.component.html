@@ -3,5 +3,7 @@
 <button
   class="get-quote-btn"
   title="Get another Quote"
+  [@isClicked]="(isRefreshBtnClicked$ | async) ? 'isClicked' : ''"
   (click)="getRandomQuote()"
 ></button>
+

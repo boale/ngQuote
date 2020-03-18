@@ -1,6 +1,7 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 
 import quotesy from 'quotesy';
 
@@ -16,12 +17,21 @@ export const QUOTESY = new InjectionToken('QUOTESY', {
 })
 export class QuoteService {
 
-  constructor(@Inject(QUOTESY) private quotes: any) {
-  }
+  private quote$$ = new BehaviorSubject<Quote>(null);
+  quote$: Observable<Quote> = this.quote$$.asObservable().pipe(distinctUntilChanged());
+
+  constructor(@Inject(QUOTESY) private quotes: any) {}
 
   getRandom(): Observable<Quote> {
     const randomQuote = this.quotes.random() as Quote;
 
-    return of(randomQuote);
+    this.emitQuote(randomQuote);
+
+    return this.quote$;
   }
+
+  private emitQuote(quote: Quote): void {
+    this.quote$$.next(quote);
+  }
+
 }

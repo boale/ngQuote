@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { mockQuoteServiceProvider } from '../../services/quote.service.mock';
 import { MockQuoteComponent } from '../quote/quote.component.mock';
@@ -13,6 +14,7 @@ describe('QuoteContainerComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ QuoteContainerComponent, MockQuoteComponent ],
       providers: [ mockQuoteServiceProvider ],
+      imports: [ NoopAnimationsModule ],
     })
     .compileComponents();
   }));
@@ -26,4 +28,5 @@ describe('QuoteContainerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

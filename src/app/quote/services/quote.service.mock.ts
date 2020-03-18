@@ -5,6 +5,8 @@ import { QuoteService, QUOTESY } from './quote.service';
 
 export class MockQuoteService {
 
+  quote$ = of({});
+
   getRandom(): Observable<Quote> {
     return of({} as Quote);
   }
