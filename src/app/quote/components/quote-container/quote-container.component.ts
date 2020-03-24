@@ -27,11 +27,11 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
 
   quote$: Observable<Quote> = this.quoteService.quote$;
 
-  constructor(private quoteService: QuoteService) {
-    this.quoteService.getRandom();
-  }
+  constructor(private quoteService: QuoteService) {}
 
   ngOnInit(): void {
+    this.quoteService.getRandom();
+
     this.quote$.pipe(
       takeUntil(this.destroy$),
       delay(300),
