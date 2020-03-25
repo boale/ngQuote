@@ -28,7 +28,7 @@ phases:
             - npm run lint
             - npm run test:coverage
             # - upload test coverage report using ${COVERAGE_REPORT_PATH}
-            - bash <(curl -s https://codecov.io/bash) -t ${CODECOV_TOKEN} -f ${CODECOV_COVERAGE_REPORT_PATH}
+            - curl -s https://codecov.io/bash | bash -s - -t ${CODECOV_TOKEN} -f ${CODECOV_COVERAGE_REPORT_PATH}
 
     build:
         commands:
