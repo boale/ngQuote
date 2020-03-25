@@ -9,6 +9,12 @@ module.exports = function (config) {
   config.set({
    ...baseConfig,
     logLevel: config.LOG_INFO,
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadlessCI'],
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox'],
+      }
+    }
   });
 };
