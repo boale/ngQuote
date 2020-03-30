@@ -1,54 +1,72 @@
 version: 0.2
 
 env:
-    variables:
-        CACHE_CONTROL: 86400
-        BUILD_ENV: test
-        S3_BUCKET: quote-app-prod
-        # CLOUDFRONT_ID: ""
-        # CODE_CLIMATE_REPORTER_ID: ""
-        # COVERAGE_REPORT_PATH: "coverage/lcov.info"
-        # CODECOV_TOKEN: ""
-        CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
+  variables:
+    CACHE_CONTROL: 86400
+    BUILD_ENV: test
+    S3_BUCKET: quote-app-prod
+    # CLOUDFRONT_ID: ""
+    # CLOUDFRONT_APP_URL: ""
+    # CODE_CLIMATE_REPORTER_ID: ""
+    # COVERAGE_REPORT_PATH: "coverage/lcov.info"
+    # CODECOV_TOKEN: ""
+    CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
 
 phases:
-    install:
-        runtime-versions:
-          nodejs: 12.x
+  install:
+    runtime-versions:
+      nodejs: 12.x
 
-        commands:
-            - apt-get update -y -q
-            - echo Installing source NPM dependencies...
-            - npm install -g @angular/cli
-            - npm install
+    commands:
+      # Get Chrome Information
+      - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+      - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+      - apt-get update -y -q
+      # Install Chrome
+      - apt-get -y install google-chrome-stable
+      # Install @angular/cli and app dependencies
+      - echo Installing source NPM dependencies...
+      - npm install -g @angular/cli
+      - npm install
+      # Install CodeClimate reporter
+      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+      - chmod +x ./cc-test-reporter
+      - ./cc-test-reporter before-build
 
-    pre_build:
-        commands:
-            - echo Running code quality checks...
-            - npm run lint
-            - npm run test:coverage
-            # - upload test coverage report using ${COVERAGE_REPORT_PATH}
-            - bash <(curl -s https://codecov.io/bash) -t ${CODECOV_TOKEN} -f ${CODECOV_COVERAGE_REPORT_PATH}
+  pre_build:
+    commands:
+      - echo Running code quality checks...
+      - npm run lint
+      - npm run test:coverage
 
-    build:
-        commands:
-            # Builds Angular application.
-            - echo Build started on `date`
-            - npm run build:prod
+  build:
+    commands:
+      # Builds Angular application.
+      - echo Build started on `date`
+      - npm run build:test
 
-    post_build:
-         commands:
-            # Clear S3 bucket.
-            - aws s3 rm s3://${S3_BUCKET} --recursive
-            - echo S3 bucket is cleared.
-            # Copy dist folder to S3 bucket
-            - aws s3 cp dist s3://${S3_BUCKET} --recursive
-            # STEP: Clear CloudFront cache.
-            - aws configure set preview.cloudfront true
-            - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
+  post_build:
+    commands:
+      # - upload test coverage report using ${COVERAGE_REPORT_PATH}
+      - curl -s https://codecov.io/bash | bash -s - -t ${CODECOV_TOKEN} -f ${CODECOV_COVERAGE_REPORT_PATH}
+      - ./cc-test-reporter after-build -i ${CODECOV_COVERAGE_REPORT_PATH} -r ${CODE_CLIMATE_REPORTER_ID} --exit-code $?
+
+      # Clear S3 bucket.
+      - aws s3 rm s3://${S3_BUCKET} --recursive
+      - echo S3 bucket is cleared.
+
+      # Copy dist folder to S3 bucket
+      - aws s3 cp dist s3://${S3_BUCKET} --recursive
+      # STEP: Clear CloudFront cache.
+      - aws configure set preview.cloudfront true
+      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
+
+      # FINALLY: Run e2e tests
+      # npm run e2e
+      - npm run e2e -- --configuration=production --base-url=${CLOUDFRONT_APP_URL}
 
 artifacts:
-    files:
-        - '**/*'
-    base-directory: 'dist*'
-    discard-paths: yes
+  files:
+    - '**/*'
+  base-directory: 'dist*'
+  discard-paths: yes
