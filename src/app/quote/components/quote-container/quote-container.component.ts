@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { delay, filter, share, takeUntil, tap } from 'rxjs/operators';
@@ -26,6 +26,18 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
   isRefreshBtnClicked$ = this.isRefreshBtnClicked$$.asObservable().pipe(share());
 
   quote$: Observable<Quote> = this.quoteService.quote$;
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (['Enter', '13'].includes(event.code)) {
+      this.getRandomQuote();
+    }
+  }
+
+  @HostListener('dblclick')
+  handleDoubleClick() {
+    this.getRandomQuote();
+  }
 
   constructor(private quoteService: QuoteService) {}
 

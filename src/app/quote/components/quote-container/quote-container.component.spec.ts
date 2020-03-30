@@ -81,4 +81,26 @@ describe('QuoteContainerComponent', () => {
 
   });
 
+  describe('events', () => {
+    it('should handle Enter keydown event and invoke getRandomQuote method', () => {
+      const spy = spyOn(component, 'getRandomQuote');
+
+      window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Enter', cancelable: true }));
+      window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', cancelable: true }));
+      window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Esc', cancelable: true }));
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should handle dbclick event and invoke getRandomQuote method', () => {
+      const spy = spyOn(component, 'getRandomQuote');
+
+      fixture.debugElement.nativeElement.dispatchEvent(new MouseEvent('dblclick', { cancelable: true }));
+      fixture.debugElement.nativeElement.dispatchEvent(new MouseEvent('click', { cancelable: true }));
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
+
+  });
+
 });
