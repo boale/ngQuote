@@ -5,6 +5,7 @@ env:
     CACHE_CONTROL: 86400
     BUILD_ENV: test
     S3_BUCKET: quote-app-test
+    GIT_BRANCH: develop
     # CLOUDFRONT_ID: ""
     # CLOUDFRONT_APP_URL: ""
     # CODE_CLIMATE_REPORTER_ID: ""
@@ -29,6 +30,7 @@ phases:
       - npm install -g @angular/cli
       - npm install
       # Install CodeClimate reporter
+      - GIT_COMMIT_SHA=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)
       - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
       - chmod +x ./cc-test-reporter
       - ./cc-test-reporter before-build
@@ -49,7 +51,7 @@ phases:
     commands:
       # - upload test coverage report using ${COVERAGE_REPORT_PATH}
       - curl -s https://codecov.io/bash | bash -s - -t ${CODECOV_TOKEN} -f ${CODECOV_COVERAGE_REPORT_PATH}
-      - ./cc-test-reporter after-build -t lcov -p coverage -r ${CODE_CLIMATE_REPORTER_ID} --exit-code $?
+      - ./cc-test-reporter after-build -t lcov -r ${CODE_CLIMATE_REPORTER_ID} --exit-code $?
 
       # Clear S3 bucket.
       - aws s3 rm s3://${S3_BUCKET} --recursive
