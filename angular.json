@@ -120,7 +120,7 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "quoteApp:serve:production"
+              "devServerTarget": ""
             }
           }
         }
