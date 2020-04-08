@@ -5,14 +5,7 @@ const baseConfig = require('./karma-base.conf');
 
 module.exports = function (config) {
   config.set({
-   ...baseConfig,
+    ...baseConfig,
     logLevel: config.LOG_INFO,
-    browsers: ['ChromeHeadlessCI'],
-    customLaunchers: {
-      ChromeHeadlessCI: {
-        base: 'ChromeHeadless',
-        flags: ['--no-sandbox'],
-      }
-    }
   });
 };

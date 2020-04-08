@@ -1,16 +1,30 @@
 import { browser, logging } from 'protractor';
 import { AppPage } from './app.po';
 
-describe('workspace-project App', () => {
+describe('Quote App', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('quoteApp app is running!');
+  describe('Quote', () => {
+    beforeEach(() => {
+      page.navigateTo();
+    });
+
+    it('should display a quote text', () => {
+      expect(page.getQuoteText()).toBeDefined();
+    });
+
+    it('should display an author of quote', () => {
+      expect(page.getQuoteAuthor).toBeTruthy();
+    });
+
+    it('should display a refresh btn', () => {
+      expect(page.getRefreshQuoteBtn).toBeTruthy();
+    });
+
   });
 
   afterEach(async () => {
@@ -20,4 +34,5 @@ describe('workspace-project App', () => {
       level: logging.Level.SEVERE,
     } as logging.Entry));
   });
+
 });
