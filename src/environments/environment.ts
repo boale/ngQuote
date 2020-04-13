@@ -4,6 +4,10 @@
 
 export const environment = {
   production: false,
+
+  apiUrls: {
+    quote: 'http://localhost:4400/api',
+  },
 };
 
 /*
