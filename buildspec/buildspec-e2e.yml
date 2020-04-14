@@ -7,19 +7,19 @@ env:
 
 phases:
    install:
-    # runtime-versions:
-      # nodejs: 12.x
+     runtime-versions:
+       nodejs: 12.x
 
      commands:
-      # Get Chrome Information.
-      # - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-      # - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+       # Get Chrome Information.
+       - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+       - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 
-      # Update packages.
-      # - apt-get update -y -q
+       # Update packages.
+        - apt-get update -y -q
 
       # Install Chrome.
-      # - apt-get -y install google-chrome-stable
+       - apt-get -y install google-chrome-stable
 
       # Install @angular/cli and app dependencies.
        - echo Installing source NPM dependencies...

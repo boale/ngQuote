@@ -49,4 +49,4 @@ artifacts:
 
 cache:
   paths:
-    - '**/*'
+    - '/**/*'
