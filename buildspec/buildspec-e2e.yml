@@ -2,6 +2,7 @@ version: 0.2
 
 env:
   variables:
+    BUILD_ENV: test
     # CLOUDFRONT_APP_URL: ""
 
 phases:

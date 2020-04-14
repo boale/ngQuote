@@ -3,6 +3,7 @@ version: 0.2
 env:
   variables:
     GIT_BRANCH: develop
+    BUILD_ENV: test
     CI_NAME: CodeBuild
     # CODE_CLIMATE_REPORTER_ID: ""
     # CODECOV_TOKEN: ""
