@@ -2,29 +2,28 @@ version: 0.2
 
 env:
   variables:
-    BUILD_ENV: test
-    # CLOUDFRONT_APP_URL: ""
+    CLOUDFRONT_APP_URL: ""
 
 phases:
-   install:
-     runtime-versions:
-       nodejs: 12.x
+  install:
+    runtime-versions:
+      nodejs: 12.x
 
-     commands:
-       # Get Chrome Information.
-       - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-       - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+    commands:
+      # Get Chrome Information.
+      - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+      - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 
-        # Update packages.
-       - apt-get update -y -q
+      # Update packages.
+      - apt-get update -y -q
 
-       # Install Chrome.
-       - apt-get -y install google-chrome-stable
+      # Install Chrome.
+      - apt-get -y install google-chrome-stable
 
-       # Install @angular/cli and app dependencies.
-       - echo Installing source NPM dependencies...
-       - npm install -g @angular/cli
-       - npm install
+      # Install @angular/cli and app dependencies.
+      - echo Installing source NPM dependencies...
+      - npm install -g @angular/cli
+      - npm install
 
   build:
     commands:
