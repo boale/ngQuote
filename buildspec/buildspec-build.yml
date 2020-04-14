@@ -46,3 +46,7 @@ artifacts:
     - '**/*'
   base-directory: 'dist*'
   discard-paths: yes
+
+cache:
+  paths:
+    - '**/*'
