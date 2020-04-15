@@ -1,10 +1,10 @@
 # QuoteApp
 
-[![DeepScan grade](https://deepscan.io/api/teams/7984/projects/10118/branches/135987/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7984&pid=10118&bid=135987)
-[![Known Vulnerabilities](https://snyk.io/test/github/boale/ngQuote/badge.svg?targetFile=package.json)](https://snyk.io/test/github/boale/ngQuote?targetFile=package.json)
-[![Maintainability](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/maintainability)](https://codeclimate.com/github/boale/ngQuote/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/test_coverage)](https://codeclimate.com/github/boale/ngQuote/test_coverage)
-[![codecov](https://codecov.io/gh/boale/ngQuote/branch/master/graph/badge.svg)](https://codecov.io/gh/boale/ngQuote)
+[![DeepScan grade](https://deepscan.io/api/teams/8613/projects/10826/branches/154701/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8613&pid=10826&bid=154701)
+[![Known Vulnerabilities](https://snyk.io/test/github/AinuraAliieva/ngQuote/badge.svg?targetFile=package.json)](https://snyk.io/test/github/AinuraAliieva/ngQuote?targetFile=package.json)
+[![Maintainability](https://api.codeclimate.com/v1/badges/706591eef7ba547a3363/maintainability)](https://codeclimate.com/github/AinuraAliieva/ngQuote/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/706591eef7ba547a3363/test_coverage)](https://codeclimate.com/github/AinuraAliieva/ngQuote/test_coverage)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e316ca441ad844c7a5fc1e03d3563f94)](https://www.codacy.com/manual/ainura_aliieva/ngQuote?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AinuraAliieva/ngQuote&amp;utm_campaign=Badge_Grade)
 
 Angular-based Quote generator with all necessary CI/CD configurations and integrations. 
 
