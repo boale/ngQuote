@@ -13,7 +13,6 @@
     "test:chrome:watch": "ng test -- --karmaConfig=karma-chrome.conf.js",
     "build": "ng build",
     "build:prod": "npm run build -- --configuration production",
-    "build:test": "npm run build -- --configuration production",
     "release": "standard-version",
     "e2e": "ng e2e"
   },
