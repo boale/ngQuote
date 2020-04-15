@@ -23,7 +23,7 @@ phases:
       - apt-get update -y -q
 
       # Install Chrome.
-      - apt-get -y install google-chrome-stable
+      - apt-get -y install google-chrome-stable bash
 
       # Install @angular/cli and app dependencies.
       - echo Installing source NPM dependencies...
@@ -47,7 +47,7 @@ phases:
   post_build:
     commands:
       # Upload test coverage report to CodeCov and CodeClimate.
-      - curl -s https://codecov.io/bash | bash -s -- -t $(echo $CODECOV_TOKEN)
+      - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
       - ./cc-test-reporter after-build -t lcov -r $(echo $CODE_CLIMATE_REPORTER_ID) --exit-code $?
 
 cache:
