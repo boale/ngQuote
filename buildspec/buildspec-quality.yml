@@ -6,7 +6,6 @@ env:
     BUILD_ENV: test
     CI_NAME: CodeBuild
     # CODE_CLIMATE_REPORTER_ID: ""
-    # CODECOV_TOKEN: ""
     CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
 
 phases:
@@ -46,8 +45,6 @@ phases:
 
   post_build:
     commands:
-      # Upload test coverage report to CodeCov and CodeClimate.
-      - bash upload_codecov_report.sh
       - ./cc-test-reporter after-build -t lcov -r $(echo $CODE_CLIMATE_REPORTER_ID) --exit-code $?
 
 cache:
