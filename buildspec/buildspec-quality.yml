@@ -47,7 +47,7 @@ phases:
   post_build:
     commands:
       # Upload test coverage report to CodeCov and CodeClimate.
-      - bash <(curl -s https://codecov.io/bash) -t $CODECOV_TOKEN
+      - bash upload_codecov_report.sh
       - ./cc-test-reporter after-build -t lcov -r $(echo $CODE_CLIMATE_REPORTER_ID) --exit-code $?
 
 cache:
