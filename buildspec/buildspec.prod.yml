@@ -11,7 +11,6 @@ env:
     # CLOUDFRONT_APP_URL: ""
     # CODE_CLIMATE_REPORTER_ID: ""
     # COVERAGE_REPORT_PATH: "coverage/lcov.info"
-    # CODECOV_TOKEN: ""
     CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
 
 phases:
@@ -57,8 +56,7 @@ phases:
 
   post_build:
     commands:
-      # Upload test coverage report to CodeCov and CodeClimate.
-      - curl -s https://codecov.io/bash | bash -s - -t ${CODECOV_TOKEN} -f ${CODECOV_COVERAGE_REPORT_PATH}
+      # Upload test coverage report to CodeClimate.
       - ./cc-test-reporter after-build -t lcov -r ${CODE_CLIMATE_REPORTER_ID} --exit-code $?
 
       # Clear S3 bucket.
