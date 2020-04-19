@@ -2,7 +2,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { delay, filter, share, takeUntil, tap } from 'rxjs/operators';
+import { delay, filter, share, switchMap, take, takeUntil, tap } from 'rxjs/operators';
 
 import { Quote } from '../../models';
 import { QuoteService } from '../../services';
@@ -42,7 +42,7 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
   constructor(private quoteService: QuoteService) {}
 
   ngOnInit(): void {
-    this.quoteService.getRandom();
+    this.quoteService.getRandom().pipe(take(1)).subscribe();
 
     this.quote$.pipe(
       takeUntil(this.destroy$),
@@ -53,7 +53,7 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
     this.isRefreshBtnClicked$.pipe(
       takeUntil(this.destroy$),
       filter(Boolean),
-      tap(() => this.quoteService.getRandom()),
+      switchMap(() => this.quoteService.getRandom()),
     ).subscribe();
   }
 

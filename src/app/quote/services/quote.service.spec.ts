@@ -1,10 +1,12 @@
 import { async, inject, TestBed } from '@angular/core/testing';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
+import { QuoteApiService } from '../api-services';
+import { mockQuoteApiServiceProvider } from '../api-services/quote-api.service.mock';
 import { Quote } from '../models';
-import { QuoteService, QUOTESY } from './quote.service';
-import { mockQuotesyProvider } from './quote.service.mock';
+
+import { QuoteService } from './quote.service';
 
 const mockQuote: Quote = {
   text: 'quote text',
@@ -16,7 +18,7 @@ describe('QuoteService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ mockQuotesyProvider ],
+      providers: [ mockQuoteApiServiceProvider ],
     });
     service = TestBed.inject(QuoteService);
   });
@@ -30,8 +32,8 @@ describe('QuoteService', () => {
     expect(quote).toEqual(jasmine.any(Observable));
   });
 
-  it('should execute quotesy to get random quote', async(inject([QUOTESY], (quotesy) => {
-    const spy = spyOn(quotesy, 'random').and.returnValue(mockQuote);
+  it('should execute quotesy to get random quote', async(inject([QuoteApiService], (quotesApi) => {
+    const spy = spyOn(quotesApi, 'getRandom').and.returnValue(of(mockQuote));
 
     service.getRandom().subscribe((quote) => {
       expect(spy).toHaveBeenCalled();
