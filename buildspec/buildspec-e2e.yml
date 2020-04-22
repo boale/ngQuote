@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    CLOUDFRONT_APP_URL: ""
+    # CLOUDFRONT_APP_URL: ""
 
 phases:
   install:
