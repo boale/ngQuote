@@ -27,7 +27,7 @@
     "@angular/platform-browser": "~9.0.7",
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
-    "husky": "^4.2.3",
+    "husky": "^4.2.5",
     "quotesy": "^1.0.2",
     "rxjs": "~6.5.4",
     "tslib": "^1.11.0",
