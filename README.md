@@ -2,13 +2,13 @@
 
 [![DeepScan grade](https://deepscan.io/api/teams/7984/projects/10118/branches/135987/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7984&pid=10118&bid=135987)
 [![Known Vulnerabilities](https://snyk.io/test/github/boale/ngQuote/badge.svg?targetFile=package.json)](https://snyk.io/test/github/boale/ngQuote?targetFile=package.json)
-[![Maintainability](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/maintainability)](https://codeclimate.com/github/boale/ngQuote/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/test_coverage)](https://codeclimate.com/github/boale/ngQuote/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/00a4824ef53ef1abdc6d/maintainability)](https://codeclimate.com/github/ViktorSoroka07/ngQuote/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/00a4824ef53ef1abdc6d/test_coverage)](https://codeclimate.com/github/ViktorSoroka07/ngQuote/test_coverage)
 [![codecov](https://codecov.io/gh/boale/ngQuote/branch/master/graph/badge.svg)](https://codecov.io/gh/boale/ngQuote)
 
 Angular-based Quote generator with all necessary CI/CD configurations and integrations. 
 
-Also it has basic integrations with Ngrx or Ngxs stores (see `feature/ngrxStore` or `feature/ngxsStore` respectively). 
+Also it has basic integrations with Ngrx or Ngxs stores (see `feature/ngrxStore` or `feature/ngxsStore` respectively).
 
 ## Development server
 
