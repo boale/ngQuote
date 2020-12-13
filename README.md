@@ -1,14 +1,15 @@
 # QuoteApp
 
-[![DeepScan grade](https://deepscan.io/api/teams/7984/projects/10118/branches/135987/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=7984&pid=10118&bid=135987)
-[![Known Vulnerabilities](https://snyk.io/test/github/boale/ngQuote/badge.svg?targetFile=package.json)](https://snyk.io/test/github/boale/ngQuote?targetFile=package.json)
-[![Maintainability](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/maintainability)](https://codeclimate.com/github/boale/ngQuote/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/test_coverage)](https://codeclimate.com/github/boale/ngQuote/test_coverage)
-[![codecov](https://codecov.io/gh/boale/ngQuote/branch/master/graph/badge.svg)](https://codecov.io/gh/boale/ngQuote)
+[![DeepScan grade](https://deepscan.io/api/teams/12102/projects/15071/branches/295401/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=12102&pid=15071&bid=295401)
+[![Known Vulnerabilities](https://snyk.io/test/github/ViktorSoroka07/ngQuote/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ViktorSoroka07/ngQuote?targetFile=package.json)
+[![Maintainability](https://api.codeclimate.com/v1/badges/00a4824ef53ef1abdc6d/maintainability)](https://codeclimate.com/github/ViktorSoroka07/ngQuote/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/00a4824ef53ef1abdc6d/test_coverage)](https://codeclimate.com/github/ViktorSoroka07/ngQuote/test_coverage)
+[![codecov](https://codecov.io/gh/ViktorSoroka07/ngQuote/branch/master/graph/badge.svg?token=Z69AAM2W8M)](https://codecov.io/gh/ViktorSoroka07/ngQuote)
+[![deepcode](https://www.deepcode.ai/api/gh/badge?key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybTEiOiJnaCIsIm93bmVyMSI6IlZpa3RvclNvcm9rYTA3IiwicmVwbzEiOiJuZ1F1b3RlIiwiaW5jbHVkZUxpbnQiOmZhbHNlLCJhdXRob3JJZCI6MjU5MTMsImlhdCI6MTYwNzg2OTkzOH0.95hFQ8G55JG1Gdpt9hPxKQ6ySohJmh48CeD9DZBQwKI)](https://www.deepcode.ai/app/gh/ViktorSoroka07/ngQuote/_/dashboard?utm_content=gh%2FViktorSoroka07%2FngQuote)
 
 Angular-based Quote generator with all necessary CI/CD configurations and integrations. 
 
-Also it has basic integrations with Ngrx or Ngxs stores (see `feature/ngrxStore` or `feature/ngxsStore` respectively). 
+Also, it has basic integrations with Ngrx or Ngxs stores (see `feature/ngrxStore` or `feature/ngxsStore` respectively).
 
 ## Development server
 
