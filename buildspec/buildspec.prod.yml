@@ -4,13 +4,12 @@ env:
   variables:
     CACHE_CONTROL: 86400
     BUILD_ENV: test
-    S3_BUCKET: quote-app-prod
+    S3_BUCKET: quote-app-prod.plotnikov
     GIT_BRANCH: master
     CI_NAME: CodeBuild
     # CLOUDFRONT_ID: ""
     # CLOUDFRONT_APP_URL: ""
     # CODE_CLIMATE_REPORTER_ID: ""
-    # COVERAGE_REPORT_PATH: "coverage/lcov.info"
     # CODECOV_TOKEN: ""
     CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
 
