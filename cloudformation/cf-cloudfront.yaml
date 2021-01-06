@@ -118,7 +118,7 @@ Resources:
           Compress: true
           DefaultTTL: 0
           LambdaFunctionAssociations:
-            - EventType: !If [ HasHSTSLambdaARN, 'origin-response', '' ]
+            - EventType: 'origin-response'
               LambdaFunctionARN: !If [ HasHSTSLambdaARN, !Ref HSTSLambdaARN, '' ]
               IncludeBody: false
         CustomErrorResponses:
