@@ -12,8 +12,6 @@
     "test:chrome": "npm test -- --karmaConfig=karma-chrome.conf.js",
     "test:chrome:watch": "ng test -- --karmaConfig=karma-chrome.conf.js",
     "build": "ng build",
-    "build:prod": "npm run build -- --configuration production",
-    "build:test": "npm run build -- --configuration production",
     "release": "standard-version",
     "e2e": "ng e2e"
   },
@@ -28,7 +26,7 @@
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
     "husky": "^4.2.3",
-    "quotesy": "^1.0.2",
+    "quotesy": "^1.0.5",
     "rxjs": "~6.5.4",
     "tslib": "^1.11.0",
     "zone.js": "~0.10.3"

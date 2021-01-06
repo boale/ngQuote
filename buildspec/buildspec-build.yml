@@ -2,11 +2,9 @@ version: 0.2
 
 env:
   variables:
-    CACHE_CONTROL: 86400
-    BUILD_ENV: test
-    S3_BUCKET: quote-app-test
-    # CLOUDFRONT_ID: ""
-    # CLOUDFRONT_APP_URL: ""
+    BUILD_ENV: "production"
+    S3_BUCKET: "quote-app"
+    CLOUDFRONT_DIST_ID: ""
 
 phases:
   install:
@@ -26,20 +24,31 @@ phases:
     commands:
       # Build Angular application.
       - echo Build started on `date`
-      - npm run build:${BUILD_ENV}
+      - npm run build -- --configuration=${BUILD_ENV}
+
 
   post_build:
     commands:
-      # Clear S3 bucket.
-      - aws s3 rm s3://${S3_BUCKET} --recursive
+      - echo Application deployment is started on `date`
+
+      - aws configure set preview.cloudfront true
+
+      # Copy the maintenance page to S3 bucket:
+      - aws s3 cp maintenance/index.html s3://${S3_BUCKET}/index.html
+      # Invalidate CloudFront cache
+      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DIST_ID} --paths "/index.html"
+
+      # Clear S3 bucket:
+      - aws s3 rm s3://${S3_BUCKET} --recursive --exclude "index.html"
       - echo S3 bucket is cleared.
-      # Copy dist folder to S3 bucket.
+
+      # Copy dist folder to S3 bucket:
       - aws s3 cp dist s3://${S3_BUCKET} --recursive
 
-      # Clear CloudFront cache.
-      - aws configure set preview.cloudfront true
-      # Create CloudFront invalidation.
-      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_ID} --paths "/*"
+      # Create CloudFront invalidation (which actually clears cache):
+      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DIST_ID} --paths "/*"
+
+      - echo Application deployment is successfully completed on `date`
 
 artifacts:
   files:
