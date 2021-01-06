@@ -38,7 +38,7 @@ Conditions:
   HasS3BucketName: !Not [ !Equals [ !Ref S3BucketName, '' ] ]
   HasWebACL: !Not [ !Equals [ !Ref WebACL, '' ] ]
   HasHSTSLambdaARN: !Not [ !Equals [ !Ref HSTSLambdaARN, '' ] ]
-  HasHostedZoneResourceUrl: !Not [ !Equals [ !Ref HostedZoneResourceUrl, '' ] ]
+  HasAcmCertificateArn: !Not [ !Equals [ !Ref AcmCertificateArn, '' ] ]
 
 Resources:
   AppBucket:
@@ -137,7 +137,7 @@ Resources:
   Route53:
     Type: AWS::Route53::RecordSet
     DependsOn: CloudFront
-    Condition: HasHostedZoneResourceUrl
+    Condition: HasAcmCertificateArn
     Properties:
       HostedZoneName: !Join [ '', [ !Ref HostedZoneResourceUrl, '.' ] ]
       Name: !Join
