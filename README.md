@@ -4,7 +4,6 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/boale/ngQuote/badge.svg?targetFile=package.json)](https://snyk.io/test/github/boale/ngQuote?targetFile=package.json)
 [![Maintainability](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/maintainability)](https://codeclimate.com/github/boale/ngQuote/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/28cd30bed8aafba2330d/test_coverage)](https://codeclimate.com/github/boale/ngQuote/test_coverage)
-[![codecov](https://codecov.io/gh/boale/ngQuote/branch/master/graph/badge.svg)](https://codecov.io/gh/boale/ngQuote)
 
 Angular-based Quote generator with all necessary CI/CD configurations and integrations. 
 

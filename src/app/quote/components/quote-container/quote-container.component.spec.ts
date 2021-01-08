@@ -41,7 +41,7 @@ describe('QuoteContainerComponent', () => {
     }));
 
     it('should get random quote onInit', inject([QuoteService], (quoteService) => {
-      const spy = spyOn(quoteService, 'getRandom');
+      const spy = spyOn(quoteService, 'getRandom').and.returnValue(of({}));
 
       component.ngOnInit();
 
