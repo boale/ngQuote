@@ -1,4 +1,4 @@
-import { async, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { Observable, of } from 'rxjs';
 
@@ -6,7 +6,8 @@ import { QuoteApiService } from '../api-services';
 import { mockQuoteApiServiceProvider } from '../api-services/quote-api.service.mock';
 import { Quote } from '../models';
 
-import { QuoteService } from './quote.service';
+import { QuoteService, QUOTESY } from './quote.service';
+import { mockQuotesyProvider } from './quote.service.mock';
 
 const mockQuote: Quote = {
   text: 'quote text',
@@ -15,12 +16,17 @@ const mockQuote: Quote = {
 
 describe('QuoteService', () => {
   let service: QuoteService;
+  let quotesy: any;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ mockQuoteApiServiceProvider ],
+      providers: [
+        mockQuoteApiServiceProvider,
+        mockQuotesyProvider,
+      ],
     });
     service = TestBed.inject(QuoteService);
+    quotesy = TestBed.inject(QUOTESY);
   });
 
   it('should be created', () => {
@@ -32,10 +38,25 @@ describe('QuoteService', () => {
     expect(quote).toEqual(jasmine.any(Observable));
   });
 
-  it('should execute quotesy to get random quote', async(inject([QuoteApiService], (quotesApi) => {
+  it('should execute quotesy to get random quote', waitForAsync(inject([QuoteApiService], (quotesApi) => {
+    service.hasApiUrl = false;
+    const spyQuotesy = spyOn(quotesy, 'random').and.returnValue(mockQuote);
     const spy = spyOn(quotesApi, 'getRandom').and.returnValue(of(mockQuote));
 
     service.getRandom().subscribe((quote) => {
+      expect(spyQuotesy).toHaveBeenCalled();
+      expect(spy).not.toHaveBeenCalled();
+      expect(quote).toEqual(mockQuote);
+    });
+  })));
+
+  it('should execute quotesy to get random quote', waitForAsync(inject([QuoteApiService], (quotesApi) => {
+    service.hasApiUrl = true;
+    const spyQuotesy = spyOn(quotesy, 'random').and.returnValue(mockQuote);
+    const spy = spyOn(quotesApi, 'getRandom').and.returnValue(of(mockQuote));
+
+    service.getRandom().subscribe((quote) => {
+      expect(spyQuotesy).not.toHaveBeenCalled();
       expect(spy).toHaveBeenCalled();
       expect(quote).toEqual(mockQuote);
     });

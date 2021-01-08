@@ -22,7 +22,7 @@ $btn-size: 36px;
   top: 120px;
   width: $btn-size;
   height: $btn-size;
-  background: url('assets/static/01.svg') no-repeat center center;
+  background: url('~assets/static/01.svg') no-repeat center center;
 
   @include md_s {
     right: 10px;

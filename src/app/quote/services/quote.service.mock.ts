@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 
 import { Quote } from '../models';
-import { QuoteService } from './quote.service';
+import { QuoteService, QUOTESY } from './quote.service';
 
 export class MockQuoteService {
 
@@ -15,4 +15,9 @@ export class MockQuoteService {
 export const mockQuoteServiceProvider = {
   provide: QuoteService,
   useClass: MockQuoteService,
+};
+
+export const mockQuotesyProvider = {
+  provide: QUOTESY,
+  useValue: { random() {} },
 };

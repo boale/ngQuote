@@ -1,12 +1,12 @@
 version: 0.2
 
-env:
-  variables:
-    GIT_BRANCH: develop
-    BUILD_ENV: test
-    CI_NAME: CodeBuild
+#env:
+#  variables:
+#    GIT_BRANCH: develop
+#    CI_NAME: CodeBuild
     # CODE_CLIMATE_REPORTER_ID: ""
-    CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
+    # CODECOV_TOKEN: ""
+#    CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
 
 phases:
   install:
@@ -22,7 +22,7 @@ phases:
       - apt-get update -y -q
 
       # Install Chrome.
-      - apt-get -y install google-chrome-stable bash
+      - apt-get -y install google-chrome-stable
 
       # Install @angular/cli and app dependencies.
       - echo Installing source NPM dependencies...
@@ -30,11 +30,11 @@ phases:
       - npm install
 
       # Set up all necessary/required env variables and Install CodeClimate reporter.
-      - export GIT_COMMIT_SHA="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)"
-      - export GIT_COMMITTED_AT="$(date +%s)"
-      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-      - chmod +x ./cc-test-reporter
-      - ./cc-test-reporter before-build
+#      - export GIT_COMMIT_SHA="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)"
+#      - export GIT_COMMITTED_AT="$(date +%s)"
+#      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#      - chmod +x ./cc-test-reporter
+#      - ./cc-test-reporter before-build
 
   build:
     commands:
@@ -43,9 +43,11 @@ phases:
       - npm run lint
       - npm run test:coverage
 
-  post_build:
-    commands:
-      - ./cc-test-reporter after-build -t lcov -r $(echo $CODE_CLIMATE_REPORTER_ID) --exit-code $?
+#  post_build:
+#    commands:
+      # Upload test coverage report to CodeCov and CodeClimate.
+#      - curl -s https://codecov.io/bash | bash -s - -t $(echo $CODECOV_TOKEN) -f ${CODECOV_COVERAGE_REPORT_PATH}
+#      - ./cc-test-reporter after-build -t lcov -r $(echo $CODE_CLIMATE_REPORTER_ID) --exit-code $?
 
 cache:
   paths:
