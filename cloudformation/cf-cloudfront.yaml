@@ -92,11 +92,19 @@ Resources:
         DefaultRootObject: index.html
         Comment: !Join [ '', [ !If [ HasAppName, !Ref AppName, !Ref 'AWS::StackName' ], ' Angular CloudFront distribution for ', !Ref Environment, ' environment' ] ]
         Aliases:
-          - !Join [ '.', [ !If [ HasAppName, !Ref AppName, !Ref 'AWS::StackName' ], !Ref HostedZoneResourceUrl ] ]
+          - !If
+            - HasAcmCertificateArn
+            - !Join [ '.', [ !If [ HasAppName, !Ref AppName, !Ref 'AWS::StackName' ], !Ref HostedZoneResourceUrl ] ]
+            - !Ref AWS::NoValue
         ViewerCertificate:
-          AcmCertificateArn: !Ref AcmCertificateArn
-          SslSupportMethod: sni-only
-          MinimumProtocolVersion: TLSv1.2_2019
+          !If
+            - HasAcmCertificateArn
+            -
+              AcmCertificateArn: !Ref AcmCertificateArn
+              SslSupportMethod: sni-only
+              MinimumProtocolVersion: TLSv1.2_2019
+            -
+              CloudFrontDefaultCertificate: true
         Origins:
           - DomainName: !Sub ${AppBucket}.s3.amazonaws.com
             Id: myS3Origin
@@ -121,7 +129,8 @@ Resources:
           LambdaFunctionAssociations:
             - !If
               - HasHSTSLambdaARN
-              - EventType: 'origin-response'
+              -
+                EventType: 'origin-response'
                 LambdaFunctionARN: !Ref HSTSLambdaARN
                 IncludeBody: false
               - !Ref AWS::NoValue
@@ -163,3 +172,6 @@ Outputs:
   Environment:
     Description: Environment name
     Value: !Ref Environment
+  CloudFrontDistributionDomainName:
+    Value:
+      'Fn::GetAtt': [ CloudFront, DomainName ]
