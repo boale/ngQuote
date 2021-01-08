@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
 import { Quote } from '../../models';
@@ -26,7 +26,7 @@ describe('QuoteComponent', () => {
   const getBlockquoteTextDebugElement = () => fixture.debugElement.query(By.css('blockquote p'));
   const getQuoteAuthorDebugElement = () => fixture.debugElement.query(By.css('cite'));
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ QuoteComponent, TestHostQuoteComponent ],
     })
