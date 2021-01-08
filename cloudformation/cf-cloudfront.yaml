@@ -119,9 +119,12 @@ Resources:
           Compress: true
           DefaultTTL: 0
           LambdaFunctionAssociations:
-            - EventType: 'origin-response'
-              LambdaFunctionARN: !If [ HasHSTSLambdaARN, !Ref HSTSLambdaARN, '' ]
-              IncludeBody: false
+            - !If
+              - HasHSTSLambdaARN
+              - EventType: 'origin-response'
+                LambdaFunctionARN: !Ref HSTSLambdaARN
+                IncludeBody: false
+              - !Ref AWS::NoValue
         CustomErrorResponses:
           - ErrorCode: 404
             ResponsePagePath: /index.html
