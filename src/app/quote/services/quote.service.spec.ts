@@ -1,4 +1,4 @@
-import { async, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { Observable } from 'rxjs';
 
@@ -30,7 +30,7 @@ describe('QuoteService', () => {
     expect(quote).toEqual(jasmine.any(Observable));
   });
 
-  it('should execute quotesy to get random quote', async(inject([QUOTESY], (quotesy) => {
+  it('should execute quotesy to get random quote', waitForAsync(inject([QUOTESY], (quotesy) => {
     const spy = spyOn(quotesy, 'random').and.returnValue(mockQuote);
 
     service.getRandom().subscribe((quote) => {
