@@ -6,7 +6,6 @@ import { Observable, of } from 'rxjs';
 import { QuoteService } from '../../services';
 import { mockQuoteServiceProvider } from '../../services/quote.service.mock';
 import { MockQuoteComponent } from '../quote/quote.component.mock';
-
 import { QuoteContainerComponent } from './quote-container.component';
 
 describe('QuoteContainerComponent', () => {
@@ -19,7 +18,7 @@ describe('QuoteContainerComponent', () => {
       providers: [ mockQuoteServiceProvider ],
       imports: [ NoopAnimationsModule ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -34,13 +33,13 @@ describe('QuoteContainerComponent', () => {
 
   describe('quote$', () => {
 
-    it('should have a quote$ stream from QuoteService', inject([QuoteService], (quoteService) => {
+    it('should have a quote$ stream from QuoteService', inject([ QuoteService ], quoteService => {
       expect(component.quote$).toBeDefined();
       expect(component.quote$).toEqual(jasmine.any(Observable));
       expect(component.quote$).toBe(quoteService.quote$);
     }));
 
-    it('should get random quote onInit', inject([QuoteService], (quoteService) => {
+    it('should get random quote onInit', inject([ QuoteService ], quoteService => {
       const spy = spyOn(quoteService, 'getRandom').and.returnValue(of({}));
 
       component.ngOnInit();
@@ -59,19 +58,19 @@ describe('QuoteContainerComponent', () => {
     });
 
     it('should invoke getRandom method of QuoteService and update status after quote$ has been changes',
-      waitForAsync(inject([QuoteService], (quoteService) => {
+      waitForAsync(inject([ QuoteService ], quoteService => {
         const spy = spyOn(quoteService, 'getRandom').and.returnValue(of(testQuote));
 
         component.getRandomQuote();
 
-        component.isRefreshBtnClicked$.subscribe((isClicked) => {
+        component.isRefreshBtnClicked$.subscribe(isClicked => {
           expect(spy).toHaveBeenCalled();
           expect(isClicked).toBe(false);
         });
       }),
-    ));
+      ));
 
-    it('should stop emitting values on destroy', inject([QuoteService], (quoteService) => {
+    it('should stop emitting values on destroy', inject([ QuoteService ], quoteService => {
       const spy = spyOn(quoteService, 'getRandom').and.returnValue(of(testQuote));
       component.ngOnDestroy();
       component.getRandomQuote();

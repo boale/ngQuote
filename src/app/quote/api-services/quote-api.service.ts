@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { Quote } from '../models';
+import { ContactData, Quote } from '../models';
 
 @Injectable({ providedIn: 'root' })
 export class QuoteApiService {
-  private apiBase = environment.apiUrls.quote;
+  private apiBase: string = environment.apiUrls.quote;
+  private shareApiBase: string = environment.apiUrls.share;
 
   constructor(
     private http: HttpClient,
@@ -25,7 +26,6 @@ export class QuoteApiService {
   }
 
   /**
-   *
    * @returns {Observable<Quote>}
    */
   getRandom(): Observable<Quote> {
@@ -35,7 +35,6 @@ export class QuoteApiService {
   }
 
   /**
-   *
    * @param {string} tag
    * @returns {Observable<Quote>}
    */
@@ -44,6 +43,30 @@ export class QuoteApiService {
     const params = new HttpParams({ fromObject: { tag } });
 
     return this.http.get<Quote>(url, { params });
+  }
+
+  share(quote: Quote, contactDetails?: ContactData): Observable<any> {
+    const url = `${ this.shareApiBase }/share`;
+
+    return this.http.post<any>(url, { quote, ...contactDetails });
+  }
+
+  create(quote: Quote): Observable<any> {
+    const url = `${ this.apiBase }/quotes`; // TODO
+
+    return this.http.post<any>(url, { quote });
+  }
+
+  delete(quote: Quote): Observable<any> {
+    const url = `${ this.apiBase }/quotes`; // TODO
+
+    return this.http.delete<any>(url);
+  }
+
+  edit(quote: Quote): Observable<any> {
+    const url = `${ this.apiBase }/quotes`; // TODO
+
+    return this.http.put<any>(url, quote);
   }
 
 }

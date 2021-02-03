@@ -11,7 +11,7 @@ const mockQuote: Quote = {
 };
 
 @Component({
-  template: `<app-quote [quote]="quote"></app-quote>`,
+  template: '<app-quote [quote]="quote"></app-quote>',
 })
 export class TestHostQuoteComponent {
   quote: Quote = mockQuote;
@@ -30,7 +30,7 @@ describe('QuoteComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ QuoteComponent, TestHostQuoteComponent ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

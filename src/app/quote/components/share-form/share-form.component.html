@@ -1,0 +1,29 @@
+<div class="">
+  <label>Share via:&nbsp;</label>
+  <ng-container *ngFor="let shareOption of shareOptions">
+    <button (click)="selectShareOption(shareOption)"
+            [class.active]="isShareOptionActive(shareOption)">
+      {{ shareOption.title }}
+    </button>
+  </ng-container>
+  <br/>
+</div>
+
+<ng-container *ngIf="selectedShareOption">
+  <div class="">
+    <label>
+      <input
+        [type]="selectedShareOption.inputType"
+        [formControl]="shareFormControl"
+        [placeholder]="selectedShareOption.placeholder"
+      />
+    </label>
+  </div>
+</ng-container>
+
+<div class="">
+  <button type="submit"
+          (click)="submit()"
+          [disabled]="!isShareFormValid">Send</button>
+  <button (click)="dismiss()">Dismiss</button>
+</div>

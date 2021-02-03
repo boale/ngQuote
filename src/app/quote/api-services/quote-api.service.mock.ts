@@ -1,7 +1,6 @@
 import { Observable, of } from 'rxjs';
 
 import { Quote } from '../models';
-
 import { QuoteApiService } from './quote-api.service';
 
 export class MockQuoteApiService {

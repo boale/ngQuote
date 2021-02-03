@@ -15,14 +15,35 @@ $btn-size: 36px;
   color: $color__white;
 }
 
-.get-quote-btn {
+.quote-actions {
   position: absolute;
+  display: flex;
   outline: none;
   right: 80px;
   top: 120px;
+}
+
+.get-quote-btn {
+  position: relative;
+  margin: 5px;
+  top: 0;
   width: $btn-size;
   height: $btn-size;
-  background: url('~assets/static/01.svg') no-repeat center center;
+  background: url('../../../../assets/static/refresh.svg') no-repeat center center;
+
+  @include md_s {
+    right: 10px;
+    top: 20px;
+  }
+}
+
+.share-quote-btn {
+  position: relative;
+  margin: 5px;
+  top: 0;
+  width: $btn-size;
+  height: $btn-size;
+  background: url('../../../../assets/static/share.svg') no-repeat center center;
 
   @include md_s {
     right: 10px;

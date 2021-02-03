@@ -4,3 +4,13 @@ export interface Quote {
   source?: string;
   tags?: string[];
 }
+
+export interface EmailContact {
+  email: string;
+}
+
+export interface PhoneContact {
+  phone: string;
+}
+
+export type ContactData = EmailContact | PhoneContact;
