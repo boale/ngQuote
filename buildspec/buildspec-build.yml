@@ -12,6 +12,10 @@ phases:
       nodejs: 12.x
 
     commands:
+      # temporary fix of YARN cert issue
+      # TODO: clean it up...
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      -
       # Update packages.
       - apt-get update -y -q
 
