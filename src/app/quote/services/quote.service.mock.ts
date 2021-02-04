@@ -21,5 +21,3 @@ export const mockQuotesyProvider = {
   provide: QUOTESY,
   useValue: { random() {} },
 };
-
-

@@ -1,0 +1,58 @@
+version: 0.2
+
+#env:
+#  variables:
+#    GIT_BRANCH: develop
+#    CI_NAME: CodeBuild
+    # CODE_CLIMATE_REPORTER_ID: ""
+    # CODECOV_TOKEN: ""
+#    CODECOV_COVERAGE_REPORT_PATH: "coverage/lcov.info"
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12.x
+
+    commands:
+      # Get Chrome Information.
+      - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+      - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+
+      # TODO: clean it up...
+      # temporary fix of YARN cert issue
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+
+      # Update packages.
+      - apt-get update -y -q
+
+      # Install Chrome.
+      - apt-get -y install google-chrome-stable
+
+      # Install @angular/cli and app dependencies.
+      - echo Installing source NPM dependencies...
+      - npm install -g @angular/cli
+      - npm install
+
+      # Set up all necessary/required env variables and Install CodeClimate reporter.
+#      - export GIT_COMMIT_SHA="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)"
+#      - export GIT_COMMITTED_AT="$(date +%s)"
+#      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+#      - chmod +x ./cc-test-reporter
+#      - ./cc-test-reporter before-build
+
+  build:
+    commands:
+      # Run code quality tools.
+      - echo Running code quality checks...
+      - npm run lint
+      - npm run test:coverage
+
+#  post_build:
+#    commands:
+      # Upload test coverage report to CodeCov and CodeClimate.
+#      - curl -s https://codecov.io/bash | bash -s - -t $(echo $CODECOV_TOKEN) -f ${CODECOV_COVERAGE_REPORT_PATH}
+#      - ./cc-test-reporter after-build -t lcov -r $(echo $CODE_CLIMATE_REPORTER_ID) --exit-code $?
+
+cache:
+  paths:
+    - '/**/*'

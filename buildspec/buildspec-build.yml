@@ -1,0 +1,65 @@
+version: 0.2
+
+env:
+  variables:
+    BUILD_ENV: "production"
+    S3_BUCKET: "quote-app"
+    CLOUDFRONT_DIST_ID: ""
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12.x
+
+    commands:
+      # temporary fix of YARN cert issue
+      # TODO: clean it up...
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      -
+      # Update packages.
+      - apt-get update -y -q
+
+      # Install @angular/cli and app dependencies.
+      - echo Installing source NPM dependencies...
+      - npm install -g @angular/cli
+      - npm install
+
+  build:
+    commands:
+      # Build Angular application.
+      - echo Build started on `date`
+      - npm run build -- --configuration=${BUILD_ENV}
+
+
+  post_build:
+    commands:
+      - echo Application deployment is started on `date`
+
+      - aws configure set preview.cloudfront true
+
+      # Copy the maintenance page to S3 bucket:
+      - aws s3 cp maintenance/index.html s3://${S3_BUCKET}/index.html
+      # Invalidate CloudFront cache
+      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DIST_ID} --paths "/index.html"
+
+      # Clear S3 bucket:
+      - aws s3 rm s3://${S3_BUCKET} --recursive --exclude "index.html"
+      - echo S3 bucket is cleared.
+
+      # Copy dist folder to S3 bucket:
+      - aws s3 cp dist s3://${S3_BUCKET} --recursive
+
+      # Create CloudFront invalidation (which actually clears cache):
+      - aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DIST_ID} --paths "/*"
+
+      - echo Application deployment is successfully completed on `date`
+
+artifacts:
+  files:
+    - '**/*'
+  base-directory: 'dist*'
+  discard-paths: yes
+
+cache:
+  paths:
+    - '/**/*'
