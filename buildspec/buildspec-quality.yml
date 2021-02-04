@@ -18,6 +18,10 @@ phases:
       - curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
       - echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
 
+      # TODO: clean it up...
+      # temporary fix of YARN cert issue
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+
       # Update packages.
       - apt-get update -y -q
 
