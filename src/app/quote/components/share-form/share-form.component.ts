@@ -32,7 +32,7 @@ export class ShareFormComponent {
       validators: [ Validators.required, Validators.maxLength(15) ],
     },
   ];
-  selectedShareOption;
+  selectedShareOption = this.shareOptions[ 0 ];
   shareFormControl: FormControl;
 
   @Output() shareSubmit = new EventEmitter<any>();
