@@ -9,6 +9,10 @@ export class MockQuoteApiService {
     return of([]);
   }
 
+  share(): Observable<any> {
+    return of({});
+  }
+
   getRandom(): Observable<Quote> {
     return of();
   }
