@@ -7,12 +7,13 @@
 blockquote {
   padding: 20px;
   height: 100%;
-  background: $color__green;
+  background: $color__blue;
   color: $color__white;
 
   strong {
     padding: 20px;
     font-size: 26px;
+    text-align: justify;
     position: relative;
     display: block;
     margin-bottom: 20px;

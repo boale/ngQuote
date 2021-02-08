@@ -31,10 +31,10 @@
         font-size: 14px;
         font-weight: bold;
         color: $color__white;
-        background: $color__purple;
+        background: $color__blue_light_dark;
 
         &.active {
-          background: $color__purple_dark;
+          background: $color__blue_dark;
         }
       }
     }
@@ -43,13 +43,13 @@
   .form-control-wrapper {
     input {
       width: 100%;
-      border: 2px solid $color__purple;
+      border: 2px solid $color__blue_light_dark;
       border-radius: 10px;
       padding: 10px 20px;
       margin-bottom: 20px;
 
       &:focus {
-        border-color: $color__purple_dark;
+        border-color: $color__blue_dark;
       }
     }
   }
@@ -62,27 +62,27 @@
   button {
     padding: 10px 20px;
     font-size: 14px;
-    background: $color__purple;
+    background: $color__blue_light_dark;
     border-radius: 18px;
     color: #fff;
     font-weight: bold;
 
     &.cancel-btn {
       background: none;
-      color: $color__purple;
+      color: $color__blue_light_dark;
       border-radius: 0;
       border-bottom: 2px solid transparent;
       padding: 5px 0;
 
       &:hover {
-        color: $color__purple_dark;
-        border-bottom: 2px solid $color__purple_dark;
+        color: $color__blue_dark;
+        border-bottom: 2px solid $color__blue_dark;
         background: none;
       }
     }
 
     &:hover {
-      background: $color__purple_dark;
+      background: $color__blue_dark;
     }
 
     &:nth-child(2) {
