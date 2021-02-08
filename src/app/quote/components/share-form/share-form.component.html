@@ -1,16 +1,18 @@
-<div class="">
-  <label>Share via:&nbsp;</label>
-  <ng-container *ngFor="let shareOption of shareOptions">
-    <button (click)="selectShareOption(shareOption)"
-            [class.active]="isShareOptionActive(shareOption)">
-      {{ shareOption.title }}
-    </button>
-  </ng-container>
-  <br/>
-</div>
+<div class="share-form-wrapper">
+  <div class="toggler-wrapper">
+    <label>Share via:&nbsp;</label>
+    <div class="toggler-wrapper-options">
+      <ng-container *ngFor="let shareOption of shareOptions">
+        <button (click)="selectShareOption(shareOption)"
+                [class.active]="isShareOptionActive(shareOption)">
+          {{ shareOption.title }}
+        </button>
+      </ng-container>
+    </div>
+    <br/>
+  </div>
 
-<ng-container *ngIf="selectedShareOption">
-  <div class="">
+  <div class="form-control-wrapper" *ngIf="selectedShareOption">
     <label>
       <input
         [type]="selectedShareOption.inputType"
@@ -19,11 +21,13 @@
       />
     </label>
   </div>
-</ng-container>
-
-<div class="">
-  <button type="submit"
-          (click)="submit()"
-          [disabled]="!isShareFormValid">Send</button>
-  <button (click)="dismiss()">Dismiss</button>
+</div>
+<div class="button-wrapper">
+  <button
+    type="submit"
+    (click)="submit()"
+    [disabled]="!isShareFormValid">
+    Send
+  </button>
+  <button class="cancel-btn" (click)="dismiss()">Dismiss</button>
 </div>

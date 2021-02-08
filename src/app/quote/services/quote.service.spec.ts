@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 
 import { QuoteApiService } from '../api-services';
 import { mockQuoteApiServiceProvider } from '../api-services/quote-api.service.mock';
-import { Quote } from '../models';
+import { ContactData, Quote } from '../models';
 import { QuoteService, QUOTESY } from './quote.service';
 import { mockQuotesyProvider } from './quote.service.mock';
 
@@ -60,5 +60,17 @@ describe('QuoteService', () => {
       expect(quote).toEqual(mockQuote);
     });
   })));
+
+  it('should call share API', inject([ QuoteApiService ], quoteApi => {
+    const spy = spyOn(quoteApi, 'share').and.returnValue({});
+
+    service.hasShareApiUrl = true;
+    service.share({} as Quote, {} as ContactData);
+
+    service.hasShareApiUrl = false;
+    service.share({} as Quote, {} as ContactData);
+    expect(spy).toHaveBeenCalledTimes(1);
+
+  }));
 
 });
