@@ -10,6 +10,10 @@ export class MockQuoteService {
   getRandom(): Observable<Quote> {
     return of({} as Quote);
   }
+
+  share() {
+    return of({});
+  }
 }
 
 export const mockQuoteServiceProvider = {

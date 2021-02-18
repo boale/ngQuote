@@ -1,0 +1,47 @@
+@import "~scss/variables";
+
+:host {
+  flex-basis: 50%;
+}
+
+blockquote {
+  padding: 20px;
+  height: 100%;
+  background: $color__blue;
+  color: $color__white;
+
+  strong {
+    padding: 20px;
+    font-size: 26px;
+    text-align: justify;
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+
+    &:after,
+    &:before {
+      position: absolute;
+      font-family: $font__icons;
+    }
+
+    &:before {
+      content: '\275d';
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -20%);
+    }
+
+    &:after {
+      content: '\e800';
+      right: 0;
+      bottom: 0;
+      transform: translate(50%, 20%);
+    }
+  }
+
+  cite {
+    display: block;
+    text-align: right;
+  }
+
+}

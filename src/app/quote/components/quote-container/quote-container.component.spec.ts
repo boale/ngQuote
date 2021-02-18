@@ -1,25 +1,31 @@
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Observable, of } from 'rxjs';
 
 import { QuoteService } from '../../services';
 import { mockQuoteServiceProvider } from '../../services/quote.service.mock';
+import { NgxSmartModalServiceMock } from '../../stub';
 import { MockQuoteComponent } from '../quote/quote.component.mock';
-
 import { QuoteContainerComponent } from './quote-container.component';
 
 describe('QuoteContainerComponent', () => {
   let component: QuoteContainerComponent;
   let fixture: ComponentFixture<QuoteContainerComponent>;
 
+  const testQuote = { text: 'test quote text', author: 'test' };
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ QuoteContainerComponent, MockQuoteComponent ],
-      providers: [ mockQuoteServiceProvider ],
+      providers: [
+        mockQuoteServiceProvider,
+        { provide: NgxSmartModalService, useClass: NgxSmartModalServiceMock },
+      ],
       imports: [ NoopAnimationsModule ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -34,13 +40,13 @@ describe('QuoteContainerComponent', () => {
 
   describe('quote$', () => {
 
-    it('should have a quote$ stream from QuoteService', inject([QuoteService], (quoteService) => {
+    it('should have a quote$ stream from QuoteService', inject([ QuoteService ], quoteService => {
       expect(component.quote$).toBeDefined();
       expect(component.quote$).toEqual(jasmine.any(Observable));
       expect(component.quote$).toBe(quoteService.quote$);
     }));
 
-    it('should get random quote onInit', inject([QuoteService], (quoteService) => {
+    it('should get random quote onInit', inject([ QuoteService ], quoteService => {
       const spy = spyOn(quoteService, 'getRandom').and.returnValue(of({}));
 
       component.ngOnInit();
@@ -51,27 +57,25 @@ describe('QuoteContainerComponent', () => {
   });
 
   describe('isRefreshBtnClicked$', () => {
-    const testQuote = { text: 'test quote text', author: 'test' };
-
     it('should have a isRefreshBtnClicked$ stream', () => {
       expect(component.isRefreshBtnClicked$).toBeDefined();
       expect(component.isRefreshBtnClicked$).toEqual(jasmine.any(Observable));
     });
 
     it('should invoke getRandom method of QuoteService and update status after quote$ has been changes',
-      waitForAsync(inject([QuoteService], (quoteService) => {
+      waitForAsync(inject([ QuoteService ], quoteService => {
         const spy = spyOn(quoteService, 'getRandom').and.returnValue(of(testQuote));
 
         component.getRandomQuote();
 
-        component.isRefreshBtnClicked$.subscribe((isClicked) => {
+        component.isRefreshBtnClicked$.subscribe(isClicked => {
           expect(spy).toHaveBeenCalled();
           expect(isClicked).toBe(false);
         });
       }),
-    ));
+      ));
 
-    it('should stop emitting values on destroy', inject([QuoteService], (quoteService) => {
+    it('should stop emitting values on destroy', inject([ QuoteService ], quoteService => {
       const spy = spyOn(quoteService, 'getRandom').and.returnValue(of(testQuote));
       component.ngOnDestroy();
       component.getRandomQuote();
@@ -82,16 +86,6 @@ describe('QuoteContainerComponent', () => {
   });
 
   describe('events', () => {
-    it('should handle Enter keydown event and invoke getRandomQuote method', () => {
-      const spy = spyOn(component, 'getRandomQuote');
-
-      window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Enter', cancelable: true }));
-      window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space', cancelable: true }));
-      window.dispatchEvent(new KeyboardEvent('keydown', { code: 'Esc', cancelable: true }));
-
-      expect(spy).toHaveBeenCalledTimes(1);
-    });
-
     it('should handle dbclick event and invoke getRandomQuote method', () => {
       const spy = spyOn(component, 'getRandomQuote');
 
@@ -101,6 +95,17 @@ describe('QuoteContainerComponent', () => {
       expect(spy).toHaveBeenCalledTimes(1);
     });
 
+  });
+
+  describe('openShareModal', () => {
+    it('should open share modal', inject([ QuoteService ], quoteService => {
+      quoteService.hasShareApiUrl = true;
+      const spy = spyOn(quoteService, 'share');
+
+      component.openShareModal(testQuote);
+
+      expect(spy).toHaveBeenCalled();
+    }));
   });
 
 });
