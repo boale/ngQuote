@@ -1,0 +1,93 @@
+@import "~scss/variables";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+  padding: 20px;
+}
+
+.share-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: auto;
+
+  .toggler-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 15px;
+    }
+
+    &-options {
+      display: flex;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-right: auto;
+
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        color: $color__white;
+        background: $color__blue_light_dark;
+
+        &.active {
+          background: $color__blue_dark;
+        }
+      }
+    }
+  }
+
+  .form-control-wrapper {
+    input {
+      width: 100%;
+      border: 2px solid $color__blue_light_dark;
+      border-radius: 10px;
+      padding: 10px 20px;
+      margin-bottom: 20px;
+
+      &:focus {
+        border-color: $color__blue_dark;
+      }
+    }
+  }
+}
+
+.button-wrapper {
+  margin-top: auto;
+  align-self: flex-end;
+
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+    background: $color__blue_light_dark;
+    border-radius: 18px;
+    color: #fff;
+    font-weight: bold;
+
+    &.cancel-btn {
+      background: none;
+      color: $color__blue_light_dark;
+      border-radius: 0;
+      border-bottom: 2px solid transparent;
+      padding: 5px 0;
+
+      &:hover {
+        color: $color__blue_dark;
+        border-bottom: 2px solid $color__blue_dark;
+        background: none;
+      }
+    }
+
+    &:hover {
+      background: $color__blue_dark;
+    }
+
+    &:nth-child(2) {
+      margin-left: 15px;
+    }
+  }
+}
+

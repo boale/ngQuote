@@ -1,0 +1,27 @@
+@import '~scss/variables';
+@import '~scss/mixins';
+
+:host {
+  display: flex;
+
+  @include md {
+    flex-direction: column;
+  }
+}
+
+::ng-deep {
+  ngx-smart-modal .overlay {
+    display: flex;
+  }
+
+  .nsm-content {
+    padding: 0;
+    margin: 0;
+  }
+
+  .nsm-dialog {
+    max-width: $breakpoint__md;
+    align-self: center;
+    min-height: unset;
+  }
+}
