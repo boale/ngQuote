@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 
+import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 import { BehaviorSubject, combineLatest, Observable, of, race, Subject } from 'rxjs';
 import {
   delay,
@@ -11,7 +12,6 @@ import {
   takeUntil,
   tap,
 } from 'rxjs/operators';
-import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 
 import { Quote } from '../../models';
 import { QuoteService } from '../../services';

@@ -11,7 +11,7 @@
     "eslint-plugin-jsdoc",
     "eslint-plugin-prefer-arrow",
     "@typescript-eslint",
-    "ordered-imports"
+    "simple-import-sort"
   ],
   "overrides": [
     {
@@ -296,6 +296,43 @@
           "always"
         ],
         "semi-spacing": "error",
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              [
+                "^@angular/*"
+              ],
+              [
+                "^@ngrx/*"
+              ],
+              [
+                "^[a-z]"
+              ],
+              [
+                "^@lodash.*"
+              ],
+              [
+                "^@env.*"
+              ],
+              [
+                "^@api/*"
+              ],
+              [
+                "^@models*"
+              ],
+              [
+                "^@app.*"
+              ],
+              [
+                "^@[a-z]"
+              ],
+              [
+                "^[.]./*"
+              ]
+            ]
+          }
+        ],
         "space-in-parens": [
           "error",
           "never"

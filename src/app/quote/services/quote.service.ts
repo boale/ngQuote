@@ -4,9 +4,9 @@ import quotesy from 'quotesy';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { distinctUntilChanged, tap } from 'rxjs/operators';
 
+import { environment } from '../../../environments/environment';
 import { QuoteApiService } from '../api-services';
 import { ContactData, Quote } from '../models';
-import { environment } from '../../../environments/environment';
 
 export const QUOTESY = new InjectionToken('QUOTESY', {
   providedIn: 'root',
@@ -36,6 +36,14 @@ export class QuoteService {
         : of(this.quotes.random())
     ).pipe(
       tap((quote: Quote) => this.emitQuote({ ...quote })),
+    );
+  }
+
+  getAll(): Observable<Quote[]> {
+    return (
+      this.hasApiUrl
+        ? this.quotesApi.getAll()
+        : of(this.quotes.parse_json())
     );
   }
 

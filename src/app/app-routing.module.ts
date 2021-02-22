@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { PrivateLayoutComponent } from './core/components';
 
 const routes: Routes = [
   {
@@ -10,7 +11,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('./quote/quote.module').then(m => m.QuoteModule),
+        component: PrivateLayoutComponent,
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('./quote/quote.module').then(m => m.QuoteModule),
+          },
+        ],
       },
     ],
   },
