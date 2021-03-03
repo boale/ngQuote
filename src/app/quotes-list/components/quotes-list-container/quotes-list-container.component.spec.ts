@@ -10,7 +10,7 @@ describe('QuotesListLandingComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ QuotesListContainerComponent ],
-      imports: [ HttpClientTestingModule ]
+      imports: [ HttpClientTestingModule ],
     })
       .compileComponents();
   });

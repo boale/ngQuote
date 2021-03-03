@@ -1,1 +1,14 @@
-<p>quote-edit-container works!</p>
+<ng-container
+  *ngIf="(quote$ | async) as quote; else loader"
+>
+  <app-quote-edit-form
+    *ngIf="!(isLoading$ | async) else loader"
+    [initialData]="quote"
+    (submitted)="onSubmitted($event)"
+  >
+  </app-quote-edit-form>
+</ng-container>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th *ngFor="let column of columns">{{ column.label }}</th>
+  </tr>
+  <tr *ngFor="let data of tableData">
+    <ng-container *ngFor="let column of columns">
+      <td *ngIf="data[ column.key ]?.value as value">
+        {{ value }}
+      </td>
+    </ng-container>
+    <td>
+      <ng-container
+        [ngTemplateOutletContext]="{ $implicit: data }"
+        [ngTemplateOutlet]="controlButtons"
+      >
+      </ng-container>
+    </td>
+  </tr>
+</table>
+
+<ng-template #controlButtons let-row>
+  <ng-container
+    [ngTemplateOutlet]="templateRefList[ 'control-cell' ]"
+    [ngTemplateOutletContext]="{ $implicit: row }"
+  ></ng-container>
+</ng-template>

@@ -1,0 +1,37 @@
+@import '~scss/variables';
+
+.app-button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background: $color__blue_light_dark;
+  border-radius: 18px;
+  color: #fff;
+  font-weight: bold;
+
+  &.cancel-btn {
+    background: none;
+    color: $color__blue_light_dark;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    padding: 5px 0;
+
+    &:hover {
+      color: $color__blue_dark;
+      border-bottom: 2px solid $color__blue_dark;
+      background: none;
+    }
+  }
+
+  &:hover {
+    background: $color__blue_dark;
+  }
+
+  &:nth-child(2) {
+    margin-left: 15px;
+  }
+
+  &:disabled {
+    background-color: $color__disabled;
+    cursor: not-allowed;
+  }
+}

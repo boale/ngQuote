@@ -1,0 +1,13 @@
+app-table {
+  display: block;
+  margin: 20px;
+
+  button {
+    background: transparent;
+    margin-right: 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

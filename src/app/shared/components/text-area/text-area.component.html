@@ -1,0 +1,11 @@
+<ng-container [formGroup]="form">
+  <label>
+    <span class="label-text">{{ label }}</span>
+    <textarea
+      class="app-text-area"
+      [class.invalid]="form.controls[ id ].invalid && form.controls[ id ].touched"
+      [formControl]="control"
+      [placeholder]="placeholder"
+    ></textarea>
+  </label>
+</ng-container>

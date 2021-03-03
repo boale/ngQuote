@@ -1,0 +1,10 @@
+@import '~scss/variables.scss';
+
+table {
+  border-collapse: collapse;
+
+  th, td {
+    border: 2px solid $color__white;
+    padding: 10px;
+  }
+}

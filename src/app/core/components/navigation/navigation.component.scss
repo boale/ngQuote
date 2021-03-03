@@ -1,0 +1,32 @@
+@import "~scss/variables";
+
+:host {
+  ul {
+    display: flex;
+    padding: 20px;
+    li {
+      ::ng-deep {
+        a {
+          margin-right: 20px;
+        }
+
+        button {
+          padding: 0;
+          margin: 0;
+        }
+
+        button, a {
+          background: transparent;
+          color: #000;
+          font-family: $font__primary;
+          font-weight: normal;
+          font-size: 16px;
+        }
+      }
+
+      &:last-child {
+        margin-left: auto;
+      }
+    }
+  }
+}

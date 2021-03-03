@@ -1,0 +1,44 @@
+@import '~scss/variables';
+
+.app-input {
+  width: 100%;
+  border: $border__size solid $color__blue_light_dark;
+  border-radius: $border__radius;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+
+  &:focus {
+    border-color: $color__blue_dark;
+  }
+
+  &.invalid {
+    border-color: $color__error;
+  }
+}
+
+.label-text {
+  font-weight: bold;
+  color: $color__white;
+  font-size: 16px;
+}
+
+label {
+  position: relative;
+
+  .clear-button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    padding: 5px;
+    background: $color__blue;
+    color: $color__white;
+    border: 2px solid $color__blue_light_dark;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+  }
+}

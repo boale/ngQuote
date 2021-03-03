@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ShareOption } from '../view.models';
 
@@ -12,7 +12,7 @@ const EMAIL_REG_EX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+")
   styleUrls: [ './share-form.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShareFormComponent {
+export class ShareFormComponent implements OnInit {
   shareOptions: ShareOption[] = [
     {
       type: 'email',
@@ -34,14 +34,34 @@ export class ShareFormComponent {
   ];
   selectedShareOption = this.shareOptions[ 0 ];
   shareFormControl: FormControl;
+  form: FormGroup;
 
   @Output() shareSubmit = new EventEmitter<any>();
   @Output() shareCancel = new EventEmitter<any>();
 
-  selectShareOption(shareOption: ShareOption): void {
-    this.shareFormControl = new FormControl('', shareOption.validators);
+  constructor(
+    private fb: FormBuilder,
+  ) {
+    this.selectShareOption(this.selectedShareOption);
+  }
 
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      [ 'share' ]: this.shareFormControl,
+    });
+  }
+
+  selectShareOption(shareOption: ShareOption): void {
     this.selectedShareOption = shareOption;
+
+    if (this.shareFormControl) {
+      this.form.controls[ 'share' ].setValidators(shareOption.validators);
+      this.shareFormControl.setValue('');
+
+      return;
+    }
+
+    this.shareFormControl = new FormControl('', shareOption.validators);
   }
 
   isShareOptionActive(shareOption: ShareOption): boolean {

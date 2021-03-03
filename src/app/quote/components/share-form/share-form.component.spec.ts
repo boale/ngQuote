@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ShareFormComponent } from './share-form.component';
 
@@ -16,6 +17,9 @@ describe('ShareFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule,
+      ],
       declarations: [ ShareFormComponent ],
     })
       .compileComponents();

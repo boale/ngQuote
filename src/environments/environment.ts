@@ -6,7 +6,7 @@ export const environment = {
   production: false,
 
   apiUrls: {
-    quote: '', // Put here your QUOTE API BASE URL. E.g.: api or https://quote.com/api
+    quote: 'https://ef1d2e47-7791-4fdf-9db1-4c7af31aee5d.mock.pstmn.io/api', // Put here your QUOTE API BASE URL. E.g.: api or https://quote.com/api
     share: '', // Put here your SHARE API BASE URL. E.g.: api or https://share.com/api
   },
 };

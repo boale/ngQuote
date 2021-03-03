@@ -1,0 +1,19 @@
+<ng-container [formGroup]="form">
+  <label>
+    <span class="label-text">{{ label }}</span>
+    <input
+      class="app-input"
+      [class.invalid]="form.controls[ id ].invalid && form.controls[ id ].touched"
+      [type]="type"
+      [formControl]="control"
+      [placeholder]="placeholder"
+    />
+    <button
+      class="clear-button"
+      *ngIf="hasClearButton"
+      (click)="clearButtonClicked()"
+    >
+      x
+    </button>
+  </label>
+</ng-container>

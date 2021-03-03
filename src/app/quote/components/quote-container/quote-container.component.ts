@@ -13,8 +13,8 @@ import {
   tap,
 } from 'rxjs/operators';
 
-import { Quote } from '../../models';
-import { QuoteService } from '../../services';
+import { Quote } from '../../../models';
+import { QuoteService } from '../../../services';
 import { QuoteShareModalComponent } from '../quote-share-modal/quote-share-modal.component';
 import { ModalIds } from '../view.models';
 
@@ -37,6 +37,7 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
   isRefreshBtnClicked$ = this.isRefreshBtnClicked$$.asObservable().pipe(share());
 
   quote$: Observable<Quote> = this.quoteService.quote$;
+  isLoading$ = this.quoteService.isLoading$;
 
   @HostListener('dblclick')
   handleDoubleClick() {

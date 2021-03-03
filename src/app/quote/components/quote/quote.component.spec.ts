@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { Quote } from '../../models';
+import { Quote } from '../../../models';
 import { QuoteComponent } from './quote.component';
 
 const mockQuote: Quote = {
+  id: '1',
   text: 'test quote text',
   author: 'me',
 };

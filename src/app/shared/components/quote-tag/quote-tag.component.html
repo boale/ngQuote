@@ -1,0 +1,18 @@
+<div [formGroup]="form">
+  <ng-container>
+    <app-input
+      *ngFor="let tag of tags"
+      [hasClearButton]="true"
+      [id]="tag.id"
+      [form]="form"
+      (onClearButtonClicked)="deleteTagById($event)"
+    >
+    </app-input>
+
+    <app-button
+      label="Add new tag"
+      (clicked)="addTag()"
+    >
+    </app-button>
+  </ng-container>
+</div>

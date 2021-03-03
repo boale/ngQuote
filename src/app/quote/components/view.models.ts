@@ -1,7 +1,8 @@
 import { ValidatorFn } from '@angular/forms';
 
 export enum ModalIds {
-  quoteShare= 'quoteShare',
+  quoteShare = 'quoteShare',
+  deleteQuote = 'deleteQuote',
 }
 
 export interface ShareOption {

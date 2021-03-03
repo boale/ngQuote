@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from '../shared/shared.module';
 import { QuoteNewContainerComponent } from './components';
+import { QuoteNewRoutingModule } from './quote-new-routing.module';
 
 const COMPONENTS = [
   QuoteNewContainerComponent,
@@ -13,6 +15,8 @@ const COMPONENTS = [
   ],
   imports: [
     CommonModule,
+    SharedModule,
+    QuoteNewRoutingModule,
   ],
 })
 export class QuoteNewModule { }
