@@ -2,7 +2,7 @@ import { Inject, Injectable, InjectionToken } from '@angular/core';
 
 import quotesy from 'quotesy';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { distinctUntilChanged, map, tap } from 'rxjs/operators';
+import { distinctUntilChanged, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { QuoteApiService } from '../api-services';

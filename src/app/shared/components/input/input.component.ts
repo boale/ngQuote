@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent implements OnInit {
-  @Output() onClearButtonClicked = new EventEmitter<string>();
+  @Output() clear = new EventEmitter<string>();
 
   @Input() placeholder = '';
   @Input() label = '';
@@ -24,6 +24,6 @@ export class InputComponent implements OnInit {
   }
 
   clearButtonClicked(): void {
-    this.onClearButtonClicked.emit(this.id);
+    this.clear.emit(this.id);
   }
 }

@@ -1,10 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { take } from 'rxjs/operators';
-
 import { Quote } from '../../../models';
-import { QuoteService } from '../../../services';
 import { QuoteTagComponent } from '../quote-tag/quote-tag.component';
 
 @Component({
@@ -43,8 +40,6 @@ export class QuoteEditFormComponent implements OnInit {
     if (this.editQuoteForm.invalid) {
       return;
     }
-
-    console.log(this.quoteTags.getValue);
 
     this.submitted.emit({
       ...this.initialData,

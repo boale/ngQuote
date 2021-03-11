@@ -7,7 +7,6 @@ import { Quote } from '../../../models';
 import { QuoteService } from '../../../services';
 import { TableDataSource } from '../../../shared/components/table/table.models';
 import { filterDeleted, getTableData } from './quotes-list-container.models.rules';
-import Table = WebAssembly.Table;
 
 @Component({
   selector: 'app-quotes-list-container',

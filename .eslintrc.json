@@ -147,6 +147,13 @@
         ],
         "@typescript-eslint/unbound-method": "off",
         "@typescript-eslint/unified-signatures": "error",
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          {
+            "checksVoidReturn": false,
+            "checksConditionals": false
+          }
+        ],
         "array-bracket-spacing": [
           "error",
           "always"

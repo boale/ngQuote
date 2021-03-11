@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
-import { TemplateDirective } from '../../directives';
 import { InputComponent } from './input.component';
 
 describe('InputComponent', () => {
