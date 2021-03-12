@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { RoutesPaths } from 'app/app-routing.config';
-import { NgxSmartModalService } from 'ngx-smart-modal';
+import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock';
 
 import { TableComponent } from '../../../shared/components';
 import { TableDataSource } from '../../../shared/components/table/table.models';
-import { NgxSmartModalServiceMock } from '../../../stub';
 import { QuotesListTableComponent } from './quotes-list-table.component';
 
 describe('QuotesListTableComponent', () => {
@@ -38,7 +37,7 @@ describe('QuotesListTableComponent', () => {
         TableComponent,
       ],
       providers: [
-        { provide: NgxSmartModalService, useClass: NgxSmartModalServiceMock },
+        mockNgxSmartModalService,
       ],
     })
       .compileComponents();
@@ -61,11 +60,5 @@ describe('QuotesListTableComponent', () => {
 
       expect(spy).toHaveBeenCalledWith([ `/${ RoutesPaths.quotes }`, RoutesPaths.edit, mockRow.id.value ]);
     }));
-  });
-
-  describe('deleteQuote', () => {
-    it('should delete quote', () => {
-      component.deleteQuote(mockRow);
-    });
   });
 });

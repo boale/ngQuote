@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
+import { ButtonComponent, InputComponent } from '..';
 import { QuoteTagComponent } from './quote-tag.component';
 
 describe('QuoteTagComponent', () => {
@@ -8,7 +10,14 @@ describe('QuoteTagComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QuoteTagComponent ],
+      imports: [
+        ReactiveFormsModule,
+      ],
+      declarations: [
+        QuoteTagComponent,
+        ButtonComponent,
+        InputComponent,
+      ],
     })
       .compileComponents();
   });

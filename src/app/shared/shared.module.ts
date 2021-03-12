@@ -1,9 +1,16 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonComponent, InputComponent, LoaderComponent, QuoteEditFormComponent, TableComponent, TextAreaComponent } from './components';
-import { QuoteTagComponent } from './components/quote-tag/quote-tag.component';
+import {
+  ButtonComponent,
+  InputComponent,
+  LoaderComponent,
+  QuoteEditFormComponent,
+  QuoteTagComponent,
+  TableComponent,
+  TextAreaComponent,
+} from './components';
 import { TemplateDirective } from './directives';
 
 const COMPONENTS = [
@@ -13,6 +20,7 @@ const COMPONENTS = [
   TextAreaComponent,
   LoaderComponent,
   QuoteEditFormComponent,
+  QuoteTagComponent,
 ];
 
 const DIRECTIVES = [
@@ -23,7 +31,6 @@ const DIRECTIVES = [
   declarations: [
     ...COMPONENTS,
     ...DIRECTIVES,
-    QuoteTagComponent,
   ],
   imports: [
     CommonModule,
@@ -37,5 +44,6 @@ const DIRECTIVES = [
     FormsModule,
     ReactiveFormsModule,
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class SharedModule { }

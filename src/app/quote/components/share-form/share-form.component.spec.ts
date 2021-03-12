@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { ButtonComponent, InputComponent } from '../../../shared/components';
 import { ShareFormComponent } from './share-form.component';
 
 describe('ShareFormComponent', () => {
@@ -20,7 +21,11 @@ describe('ShareFormComponent', () => {
       imports: [
         ReactiveFormsModule,
       ],
-      declarations: [ ShareFormComponent ],
+      declarations: [
+        ShareFormComponent,
+        ButtonComponent,
+        InputComponent,
+      ],
     })
       .compileComponents();
   });

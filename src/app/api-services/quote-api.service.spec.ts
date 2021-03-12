@@ -25,7 +25,6 @@ describe('QuoteApiService', () => {
 
   describe('API interactions', () => {
     const mockQuote: Quote = { id: '', text: 'text', author: 'test' };
-    const mockQuotes: Quote[] = [ mockQuote ];
 
     afterEach(() => {
       httpMock.verify();
@@ -33,10 +32,15 @@ describe('QuoteApiService', () => {
 
     it('should getAll quotes', () => {
       const url = `${ environment.apiUrls.quote }/quotes`;
-      const response: Quote[] = mockQuotes;
+      const response = {
+        data: [
+          { ...mockQuote },
+        ],
+      };
+      const expectedResult = [ { ...mockQuote } ];
 
       service.getAll().subscribe(data => {
-        expect(data).toEqual(response);
+        expect(data).toEqual(expectedResult);
       });
 
       const mockReq = httpMock.expectOne(url);
@@ -49,17 +53,20 @@ describe('QuoteApiService', () => {
 
     it('should getRandom quote', () => {
       const url = `${ environment.apiUrls.quote }/quotes/random`;
-      const response: Quote = mockQuote;
+      const response = {
+        data: {
+          ...mockQuote,
+        },
+      };
+      const expectedResult = { ...mockQuote };
 
       service.getRandom().subscribe(data => {
-        expect(data).toEqual(response);
+        expect(data).toEqual(expectedResult);
       });
 
       const mockReq = httpMock.expectOne(url);
 
-      mockReq.flush({
-        data: mockQuote,
-      });
+      mockReq.flush(response);
 
       expect(mockReq.request.method).toBe('GET');
       expect(mockReq.request.url).toEqual(url);

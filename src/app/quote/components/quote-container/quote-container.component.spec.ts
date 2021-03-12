@@ -1,12 +1,11 @@
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NgxSmartModalService } from 'ngx-smart-modal';
+import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock';
 import { Observable, of } from 'rxjs';
 
 import { QuoteService } from '../../../services';
 import { mockQuoteServiceProvider } from '../../../services/quote.service.mock';
-import { NgxSmartModalServiceMock } from '../../../stub';
 import { MockQuoteComponent } from '../quote/quote.component.mock';
 import { QuoteContainerComponent } from './quote-container.component';
 
@@ -21,7 +20,7 @@ describe('QuoteContainerComponent', () => {
       declarations: [ QuoteContainerComponent, MockQuoteComponent ],
       providers: [
         mockQuoteServiceProvider,
-        { provide: NgxSmartModalService, useClass: NgxSmartModalServiceMock },
+        mockNgxSmartModalService,
       ],
       imports: [ NoopAnimationsModule ],
     })

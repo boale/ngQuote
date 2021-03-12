@@ -1,6 +1,7 @@
+import { NgxSmartModalService } from 'ngx-smart-modal';
 import { of } from 'rxjs';
 
-export class NgxSmartModalServiceMock {
+export class MockNgxSmartModalService {
   create() {
     return {
       setData(data: any) {
@@ -81,4 +82,13 @@ export class NgxSmartModalServiceMock {
   addModal() {
     return;
   }
+
+  removeModal() {
+    return;
+  }
 }
+
+export const mockNgxSmartModalService = {
+  provide: NgxSmartModalService,
+  useClass: MockNgxSmartModalService,
+};

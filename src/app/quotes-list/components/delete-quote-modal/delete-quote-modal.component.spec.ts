@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxSmartModalService } from 'ngx-smart-modal';
+import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock';
 
-import { NgxSmartModalServiceMock } from '../../../stub';
+import { ButtonComponent } from '../../../shared/components';
 import { DeleteQuoteModalComponent } from './delete-quote-modal.component';
 
 describe('DeleteQuoteModalComponent', () => {
@@ -11,9 +11,12 @@ describe('DeleteQuoteModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteQuoteModalComponent ],
+      declarations: [
+        DeleteQuoteModalComponent,
+        ButtonComponent,
+      ],
       providers: [
-        { provide: NgxSmartModalService, useClass: NgxSmartModalServiceMock },
+        mockNgxSmartModalService,
       ],
     })
       .compileComponents();

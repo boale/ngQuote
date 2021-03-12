@@ -2,7 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { ButtonComponent, InputComponent, TextAreaComponent } from '../../../shared/components';
+import { ButtonComponent, InputComponent, QuoteTagComponent, TextAreaComponent } from '../../../shared/components';
 import { QuoteEditFormComponent } from './quote-edit-form.component';
 
 describe('QuoteEditFormComponent', () => {
@@ -20,6 +20,7 @@ describe('QuoteEditFormComponent', () => {
         ButtonComponent,
         InputComponent,
         TextAreaComponent,
+        QuoteTagComponent,
       ],
     })
       .compileComponents();

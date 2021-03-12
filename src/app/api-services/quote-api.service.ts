@@ -24,7 +24,7 @@ export class QuoteApiService {
     const url = `${ this.apiBase }/quotes`;
 
     return this.http.get<Quote[]>(url).pipe(
-      map((res: any) => ([ ...res.data ])),
+      map((res: any) => res.data),
     );
   }
 
@@ -32,7 +32,7 @@ export class QuoteApiService {
     const url = `${ this.apiBase }/quotes/${ id }`;
 
     return this.http.get<Quote>(url).pipe(
-      map((res: any) => ({ ...res.data })),
+      map((res: any) => res.data),
     );
   }
 
@@ -43,7 +43,7 @@ export class QuoteApiService {
     const url = `${ this.apiBase }/quotes/random`;
 
     return this.http.get<Quote>(url).pipe(
-      map((res: any) => ({ ...res.data })),
+      map((res: any) => res.data),
     );
   }
 

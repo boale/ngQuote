@@ -1,11 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { NgxSmartModalService } from 'ngx-smart-modal';
+import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock';
 
 import { ContactData } from '../../../models';
 import { ButtonComponent, InputComponent } from '../../../shared/components';
-import { NgxSmartModalServiceMock } from '../../../stub';
 import { QuotePreviewComponent, QuoteShareModalComponent, ShareFormComponent } from '../../components';
 
 
@@ -26,7 +25,7 @@ describe('ShareModalComponent', () => {
         ShareFormComponent,
       ],
       providers: [
-        { provide: NgxSmartModalService, useClass: NgxSmartModalServiceMock },
+        mockNgxSmartModalService,
       ],
     })
       .compileComponents();
