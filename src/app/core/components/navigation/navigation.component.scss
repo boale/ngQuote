@@ -1,6 +1,9 @@
 @import "~scss/variables";
 
 :host {
+  display: block;
+  width: 100%;
+
   ul {
     display: flex;
     padding: 20px;
@@ -16,11 +19,24 @@
         }
 
         button, a {
+          position: relative;
           background: transparent;
-          color: #000;
+          color: $color__white;
           font-family: $font__primary;
-          font-weight: normal;
-          font-size: 16px;
+          font-weight: bold;
+          font-size: 18px;
+
+          &:hover {
+            &:after {
+              position: absolute;
+              content: '';
+              width: 100%;
+              bottom: -5px;
+              left: 0;
+              height: 3px;
+              background-color: $color__blue;
+            }
+          }
         }
       }
 

@@ -5,10 +5,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock';
 
 import { LoaderComponent } from '../../../shared/components';
+import { mockToastrService } from '../../../stub';
 import { QuotesListTableComponent } from '../../components';
 import { QuotesListContainerComponent } from './quotes-list-container.component';
 
-describe('QuotesListLandingComponent', () => {
+describe('QuotesListContainerComponent', () => {
   let component: QuotesListContainerComponent;
   let fixture: ComponentFixture<QuotesListContainerComponent>;
 
@@ -25,6 +26,7 @@ describe('QuotesListLandingComponent', () => {
       ],
       providers: [
         mockNgxSmartModalService,
+        mockToastrService,
       ],
     })
       .compileComponents();

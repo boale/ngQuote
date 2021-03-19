@@ -1,8 +1,9 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
 
+import { ToastrService } from 'ngx-toastr';
 import quotesy from 'quotesy';
-import { BehaviorSubject, Observable, of } from 'rxjs';
-import { distinctUntilChanged, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { catchError, distinctUntilChanged, tap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { QuoteApiService } from '../api-services';
@@ -28,6 +29,7 @@ export class QuoteService {
 
   constructor(
     private quotesApi: QuoteApiService,
+    private toastrService: ToastrService,
     @Inject(QUOTESY) private quotes: any,
   ) {}
 
@@ -41,6 +43,11 @@ export class QuoteService {
     ).pipe(
       tap((quote: Quote) => this.emitQuote({ ...quote })),
       tap(() => this.isLoading$$.next(false)),
+      catchError((err: any) => {
+        this.isLoading$$.next(false);
+
+        return throwError(err);
+      }),
     );
   }
 
@@ -49,6 +56,11 @@ export class QuoteService {
 
     return this.quotesApi.getById(id).pipe(
       tap(() => this.isLoading$$.next(false)),
+      catchError((err: any) => {
+        this.isLoading$$.next(false);
+
+        return throwError(err);
+      }),
     );
   }
 
@@ -57,6 +69,12 @@ export class QuoteService {
 
     return this.quotesApi.edit(quote).pipe(
       tap(() => this.isLoading$$.next(false)),
+      tap(() => this.toastrService.success('Quote successfully edited.')),
+      catchError((err: any) => {
+        this.isLoading$$.next(false);
+
+        return throwError(err);
+      }),
     );
   }
 
@@ -65,6 +83,12 @@ export class QuoteService {
 
     return this.quotesApi.create(quote).pipe(
       tap(() => this.isLoading$$.next(false)),
+      tap(() => this.toastrService.success('Quote has been created.')),
+      catchError((err: any) => {
+        this.isLoading$$.next(false);
+
+        return throwError(err);
+      }),
     );
   }
 
@@ -77,14 +101,30 @@ export class QuoteService {
         : of(this.quotes.parse_json())
     ).pipe(
       tap(() => this.isLoading$$.next(false)),
+      catchError((err: any) => {
+        this.isLoading$$.next(false);
+
+        return throwError(err);
+      }),
     );
   }
 
   share(quote: Quote, contactData: ContactData): Observable<any> {
+    this.isLoading$$.next(true);
+
     return this.hasShareApiUrl ?
       this.quotesApi.share(quote, contactData) :
       // eslint-disable-next-line no-console
-      of(null).pipe(tap(() => console.info('shared: ', quote, contactData)));
+      of(null).pipe(
+        tap(() => console.info('shared: ', quote, contactData)),
+        tap(() => this.isLoading$$.next(false)),
+        tap(() => this.toastrService.success('Quote has been successfully shared.')),
+        catchError((err: any) => {
+          this.isLoading$$.next(false);
+
+          return throwError(err);
+        }),
+      );
   }
 
   delete(id: string): Observable<any> {
@@ -92,6 +132,12 @@ export class QuoteService {
 
     return this.quotesApi.delete(id).pipe(
       tap(() => this.isLoading$$.next(false)),
+      tap(() => this.toastrService.success('Quote successfully removed.')),
+      catchError((err: any) => {
+        this.isLoading$$.next(false);
+
+        return throwError(err);
+      }),
     );
   }
 

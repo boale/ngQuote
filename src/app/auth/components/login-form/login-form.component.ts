@@ -13,8 +13,8 @@ import { AuthService } from '../../services';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent implements OnInit {
-
   loginForm: FormGroup;
+  isLoading$ = this.authService.isLoading$;
 
   private returnUrl: string;
 

@@ -11,10 +11,11 @@ import { generateUniqueId, getFormattedTagsFromFormValue, getTagsArrayFromString
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QuoteTagComponent implements OnInit {
-  @Input() initialData = 'talent, curious, curiosity, passion';
+  @Input() initialData: string;
 
   form: FormGroup;
-  tags = [];
+
+  private tags = [];
 
   get getValue() {
     return getFormattedTagsFromFormValue(this.form);

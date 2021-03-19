@@ -1,5 +1,7 @@
 @import '~scss/variables';
 
-main {
-  background-color: $color__blue;
+:host {
+  display: flex;
+  flex-grow: 1;
+  min-width: 0;
 }

@@ -1,5 +1,6 @@
 import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 
+import { mockToastrService } from 'app/stub';
 import { Observable, of } from 'rxjs';
 
 import { QuoteApiService } from '../api-services';
@@ -23,6 +24,7 @@ describe('QuoteService', () => {
       providers: [
         mockQuoteApiServiceProvider,
         mockQuotesyProvider,
+        mockToastrService,
       ],
     });
     service = TestBed.inject(QuoteService);

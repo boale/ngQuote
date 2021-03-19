@@ -80,7 +80,9 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
 
   private createAndOpenShareModalWithData(quote: Quote): NgxSmartModalComponent {
     return this.modalService
-      .create<QuoteShareModalComponent>(ModalIds.quoteShare, QuoteShareModalComponent)
+      .create<QuoteShareModalComponent>(ModalIds.quoteShare, QuoteShareModalComponent, {
+      customClass: 'share-modal',
+    })
       .setData({ quote })
       .open();
   }

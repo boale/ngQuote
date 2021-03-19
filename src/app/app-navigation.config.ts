@@ -3,6 +3,10 @@ import { NavigationItem } from './core/components/navigation/navigation.models';
 
 export const APP_NAVIGATION_CONFIG: NavigationItem[] = [
   {
+    label: 'Home',
+    path: [ RoutesPaths.root ],
+  },
+  {
     label: 'Quotes list',
     path: [ RoutesPaths.quotes ],
   },

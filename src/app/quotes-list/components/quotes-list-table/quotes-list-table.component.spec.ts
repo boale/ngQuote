@@ -8,6 +8,7 @@ import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock'
 
 import { TableComponent } from '../../../shared/components';
 import { TableDataSource } from '../../../shared/components/table/table.models';
+import { mockToastrService } from '../../../stub';
 import { QuotesListTableComponent } from './quotes-list-table.component';
 
 describe('QuotesListTableComponent', () => {
@@ -38,6 +39,7 @@ describe('QuotesListTableComponent', () => {
       ],
       providers: [
         mockNgxSmartModalService,
+        mockToastrService,
       ],
     })
       .compileComponents();

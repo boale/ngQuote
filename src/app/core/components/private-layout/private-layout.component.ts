@@ -9,7 +9,9 @@ import { AuthService } from '../../../auth/services';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PrivateLayoutComponent {
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+  ) {
     this.authService.authData$.subscribe();
   }
 }

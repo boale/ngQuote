@@ -1,0 +1,37 @@
+@import '~scss/variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    padding-left: 20px;
+    top: 0;
+    background: $color__blue_dark;
+    box-shadow: $shadow;
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+
+    .logo {
+      font-family: $font__icons;
+      font-size: 57px;
+      position: relative;
+      color: $color__light_gray;
+
+      &:before {
+        position: relative;
+        content: '\e800';
+      }
+    }
+  };
+
+  main {
+    display: flex;
+    flex-grow: 1;
+  }
+}

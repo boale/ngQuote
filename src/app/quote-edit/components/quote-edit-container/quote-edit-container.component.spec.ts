@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { LoaderComponent } from '../../../shared/components';
+import { mockToastrService } from '../../../stub';
 import { QuoteEditContainerComponent } from './quote-edit-container.component';
 
 describe('QuoteEditContainerComponent', () => {
@@ -19,6 +20,9 @@ describe('QuoteEditContainerComponent', () => {
         QuoteEditContainerComponent,
         LoaderComponent,
       ],
+      providers: [
+        mockToastrService,
+      ]
     })
       .compileComponents();
   });

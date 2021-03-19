@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { switchMap, take, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { catchError, switchMap, take, tap } from 'rxjs/operators';
 
+import { RoutesPaths } from '../../../app-routing.config';
 import { Quote } from '../../../models';
 import { QuoteService } from '../../../services';
 
@@ -21,6 +22,7 @@ export class QuoteEditContainerComponent {
   constructor(
     private activateRouter: ActivatedRoute,
     private quoteService: QuoteService,
+    private router: Router,
   ) {
     const { id } = activateRouter.snapshot.params;
 
@@ -36,8 +38,13 @@ export class QuoteEditContainerComponent {
 
   private getQuoteById(id: string): Observable<Quote> {
     return this.quoteService.getById(id).pipe(
-      tap((quote: Quote) => this.quote$$.next(quote)),
       take(1),
+      tap((quote: Quote) => this.quote$$.next(quote)),
+      catchError((err: any) => {
+        this.router.navigate([ RoutesPaths.quotes ]);
+
+        return throwError(err);
+      })
     );
   }
 

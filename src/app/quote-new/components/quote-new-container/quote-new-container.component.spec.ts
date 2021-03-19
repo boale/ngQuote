@@ -5,6 +5,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { ButtonComponent, InputComponent, QuoteEditFormComponent, TextAreaComponent } from '../../../shared/components';
 import { QuoteTagComponent } from '../../../shared/components/quote-tag/quote-tag.component';
+import { mockToastrService } from '../../../stub';
 import { QuoteNewContainerComponent } from './quote-new-container.component';
 
 describe('QuoteNewContainerComponent', () => {
@@ -26,6 +27,9 @@ describe('QuoteNewContainerComponent', () => {
         RouterTestingModule,
         ReactiveFormsModule,
       ],
+      providers: [
+        mockToastrService,
+      ]
     })
       .compileComponents();
   });

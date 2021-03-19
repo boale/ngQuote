@@ -25,7 +25,10 @@ describe('QuoteTagComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(QuoteTagComponent);
     component = fixture.componentInstance;
+    component.initialData = 'some, test, data';
+
     fixture.detectChanges();
+
   });
 
   it('should create', () => {
