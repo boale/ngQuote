@@ -24,7 +24,6 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
     NgxSmartModalModule.forRoot(),
     ToastrModule.forRoot(),
-
   ],
   providers: [],
   bootstrap: [ AppComponent ],

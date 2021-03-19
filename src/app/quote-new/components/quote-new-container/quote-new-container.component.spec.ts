@@ -29,7 +29,7 @@ describe('QuoteNewContainerComponent', () => {
       ],
       providers: [
         mockToastrService,
-      ]
+      ],
     })
       .compileComponents();
   });

@@ -3,9 +3,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+import { SidebarModule } from 'ng-sidebar';
+
 import { SharedModule } from '../shared/shared.module';
-import { AuthLayoutComponent, PrivateLayoutComponent } from './components';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { AuthLayoutComponent, NavigationComponent, PrivateLayoutComponent } from './components';
 import { BasicAuthInterceptor } from './interceptors/basic-auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { QuoteApiInterceptor } from './interceptors/quote-api.interceptor';
@@ -13,12 +14,12 @@ import { QuoteApiInterceptor } from './interceptors/quote-api.interceptor';
 const COMPONENTS = [
   PrivateLayoutComponent,
   AuthLayoutComponent,
+  NavigationComponent,
 ];
 
 @NgModule({
   declarations: [
     ...COMPONENTS,
-    NavigationComponent,
   ],
   providers: [
     {
@@ -41,6 +42,7 @@ const COMPONENTS = [
     CommonModule,
     RouterModule,
     SharedModule,
+    SidebarModule.forRoot(),
   ],
   exports: [
     ...COMPONENTS,
