@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList } from '@angular/core';
 
+import { environment } from '../../../../environments/environment';
 import { TemplateDirective } from '../../directives';
 import { TableDataSource, TableHeadColumns } from './table.models';
 
@@ -9,7 +10,7 @@ import { TableDataSource, TableHeadColumns } from './table.models';
   styleUrls: [ './table.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
   @ContentChildren(TemplateDirective) set contentChildren(queryList: QueryList<TemplateDirective>) {
     if (!queryList.length) {
       return;
@@ -26,9 +27,5 @@ export class TableComponent implements OnInit {
   @Input() tableData: TableDataSource[] = [];
   @Input() columns: TableHeadColumns[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  isApiExist = environment.apiUrls.quote;
 }

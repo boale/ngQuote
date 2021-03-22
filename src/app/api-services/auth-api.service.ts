@@ -11,7 +11,7 @@ import { ApiResponse, AuthData } from '../models';
   providedIn: 'root',
 })
 export class AuthApiService {
-  private apiBase: string = environment.apiUrls.quote;
+  private apiBase: string = environment.apiUrls.auth;
 
   constructor(
     private http: HttpClient,

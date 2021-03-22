@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { RoutesPaths } from './app-routing.config';
 import { AuthGuard } from './auth/guards';
+import { LoginPageGuard } from './auth/guards/login-page.guard';
 import { AuthLayoutComponent, PrivateLayoutComponent } from './core/components';
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
       {
         path: RoutesPaths.auth,
         component: AuthLayoutComponent,
+        canActivate: [ LoginPageGuard ],
         children: [
           {
             path: '',
