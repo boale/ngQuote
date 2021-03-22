@@ -17,6 +17,23 @@ export class MockQuoteApiService {
     return of();
   }
 
+  edit(): Observable<any> {
+    return of();
+  }
+
+  create(): Observable<any> {
+    return of();
+  }
+
+  delete(): Observable<any> {
+    return of();
+  }
+
+  getById(): Observable<any> {
+    return of();
+  }
+
+
   getRandomByTag(tag: string): Observable<Quote> {
     return of();
   }

@@ -2,7 +2,7 @@ export interface Quote {
   id: string;
   author: string;
   text: string;
-  isDeleted?: string;
+  isDeleted?: boolean;
   source?: string;
   tags?: string;
 }

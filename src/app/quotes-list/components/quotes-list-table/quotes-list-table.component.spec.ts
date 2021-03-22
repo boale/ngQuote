@@ -1,14 +1,13 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { RoutesPaths } from 'app/app-routing.config';
-import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock';
-
-import { TableComponent } from '../../../shared/components';
+import { RoutesPaths } from '../../../app-routing.config';
+import { LoaderComponent, TableComponent } from '../../../shared/components';
 import { TableDataSource } from '../../../shared/components/table/table.models';
-import { mockToastrService } from '../../../stub';
+import { mockToastrServiceProvider } from '../../../stub';
+import { mockNgxSmartModalService } from '../../../stub/ngx-smart-modal-service.mock';
 import { QuotesListTableComponent } from './quotes-list-table.component';
 
 describe('QuotesListTableComponent', () => {
@@ -27,8 +26,8 @@ describe('QuotesListTableComponent', () => {
     },
   } as TableDataSource;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
@@ -36,14 +35,15 @@ describe('QuotesListTableComponent', () => {
       declarations: [
         QuotesListTableComponent,
         TableComponent,
+        LoaderComponent,
       ],
       providers: [
         mockNgxSmartModalService,
-        mockToastrService,
+        mockToastrServiceProvider,
       ],
     })
       .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(QuotesListTableComponent);

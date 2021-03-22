@@ -1,9 +1,13 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { ButtonComponent, InputComponent } from '../../../shared/components';
+import { of } from 'rxjs';
+
+import { ButtonComponent, InputComponent, LoaderComponent } from '../../../shared/components';
+import { AuthService } from '../../services';
+import { mockAuthServiceProvider } from '../../services/auth.service.mock';
 import { LoginFormComponent } from './login-form.component';
 
 describe('LoginFormComponent', () => {
@@ -17,10 +21,14 @@ describe('LoginFormComponent', () => {
         HttpClientTestingModule,
         RouterTestingModule,
       ],
+      providers: [
+        mockAuthServiceProvider,
+      ],
       declarations: [
         LoginFormComponent,
         InputComponent,
         ButtonComponent,
+        LoaderComponent,
       ],
     })
       .compileComponents();
@@ -34,5 +42,23 @@ describe('LoginFormComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('onSubmit', () => {
+    it('should login user', inject([ AuthService ], authService => {
+      const spy = spyOn(authService, 'login').and.returnValue(of({}));
+
+      component.loginForm = new FormBuilder().group({
+        username: 'test',
+        password: '123456',
+      });
+      const expectedParams = {
+        username: 'test',
+        password: '123456',
+      };
+      component.onSubmit();
+
+      expect(spy).toHaveBeenCalledWith(expectedParams);
+    }));
   });
 });

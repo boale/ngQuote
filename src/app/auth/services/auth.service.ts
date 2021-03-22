@@ -19,7 +19,9 @@ export class AuthService {
     private authApiService: AuthApiService,
     private router: Router,
   ) {
-    this.authData$$ = new BehaviorSubject<AuthData>(JSON.parse(localStorage.getItem('authData')));
+    const authData = localStorage.getItem('authData');
+
+    this.authData$$ = new BehaviorSubject<AuthData>(authData ? JSON.parse(authData) : null);
     this.authData$ = this.authData$$.asObservable();
 
     this.isLoading$$ = new BehaviorSubject<boolean>(false);

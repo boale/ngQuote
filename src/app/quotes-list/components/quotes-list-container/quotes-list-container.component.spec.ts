@@ -1,11 +1,10 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock';
-
-import { LoaderComponent } from '../../../shared/components';
-import { mockToastrService } from '../../../stub';
+import { LoaderComponent, TableComponent } from '../../../shared/components';
+import { mockToastrServiceProvider } from '../../../stub';
+import { mockNgxSmartModalService } from '../../../stub/ngx-smart-modal-service.mock';
 import { QuotesListTableComponent } from '../../components';
 import { QuotesListContainerComponent } from './quotes-list-container.component';
 
@@ -13,12 +12,13 @@ describe('QuotesListContainerComponent', () => {
   let component: QuotesListContainerComponent;
   let fixture: ComponentFixture<QuotesListContainerComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       declarations: [
         QuotesListContainerComponent,
         QuotesListTableComponent,
         LoaderComponent,
+        TableComponent,
       ],
       imports: [
         HttpClientTestingModule,
@@ -26,11 +26,11 @@ describe('QuotesListContainerComponent', () => {
       ],
       providers: [
         mockNgxSmartModalService,
-        mockToastrService,
+        mockToastrServiceProvider,
       ],
     })
       .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(QuotesListContainerComponent);

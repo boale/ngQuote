@@ -13,9 +13,6 @@
     "@typescript-eslint",
     "simple-import-sort"
   ],
-  "ignorePatterns": [
-    "test.ts"
-  ],
   "overrides": [
     {
       "files": [

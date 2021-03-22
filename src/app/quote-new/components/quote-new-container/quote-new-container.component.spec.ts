@@ -1,19 +1,19 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { ButtonComponent, InputComponent, QuoteEditFormComponent, TextAreaComponent } from '../../../shared/components';
+import { ButtonComponent, InputComponent, LoaderComponent, QuoteEditFormComponent, TextAreaComponent } from '../../../shared/components';
 import { QuoteTagComponent } from '../../../shared/components/quote-tag/quote-tag.component';
-import { mockToastrService } from '../../../stub';
+import { mockToastrServiceProvider } from '../../../stub';
 import { QuoteNewContainerComponent } from './quote-new-container.component';
 
 describe('QuoteNewContainerComponent', () => {
   let component: QuoteNewContainerComponent;
   let fixture: ComponentFixture<QuoteNewContainerComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       declarations: [
         QuoteNewContainerComponent,
         QuoteEditFormComponent,
@@ -21,6 +21,7 @@ describe('QuoteNewContainerComponent', () => {
         TextAreaComponent,
         QuoteTagComponent,
         ButtonComponent,
+        LoaderComponent,
       ],
       imports: [
         HttpClientTestingModule,
@@ -28,11 +29,11 @@ describe('QuoteNewContainerComponent', () => {
         ReactiveFormsModule,
       ],
       providers: [
-        mockToastrService,
+        mockToastrServiceProvider,
       ],
     })
       .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(QuoteNewContainerComponent);

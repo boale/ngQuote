@@ -14,7 +14,7 @@ export class QuoteTagComponent implements OnInit {
   @Input() initialData: string;
 
   form: FormGroup;
-  tags = [];
+  tags: QuoteTag[] = [];
 
   get getValue() {
     return getFormattedTagsFromFormValue(this.form);

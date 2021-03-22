@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { mockNgxSmartModalService } from 'app/stub/ngx-smart-modal-service.mock';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ButtonComponent } from '../../../shared/components';
+import { mockNgxSmartModalService } from '../../../stub/ngx-smart-modal-service.mock';
 import { DeleteQuoteModalComponent } from './delete-quote-modal.component';
 
 describe('DeleteQuoteModalComponent', () => {
   let component: DeleteQuoteModalComponent;
   let fixture: ComponentFixture<DeleteQuoteModalComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
       declarations: [
         DeleteQuoteModalComponent,
         ButtonComponent,
@@ -20,7 +19,7 @@ describe('DeleteQuoteModalComponent', () => {
       ],
     })
       .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DeleteQuoteModalComponent);

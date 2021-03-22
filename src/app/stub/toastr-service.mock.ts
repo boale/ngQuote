@@ -15,7 +15,7 @@ const toastrService = {
   },
 };
 
-export const mockToastrService = {
+export const mockToastrServiceProvider = {
   provide: ToastrService,
   useValue: toastrService,
 };

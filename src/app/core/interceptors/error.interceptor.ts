@@ -1,10 +1,11 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { AuthService } from 'app/auth/services';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
+import { AuthService } from '../../auth/services';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -21,7 +22,6 @@ export class ErrorInterceptor implements HttpInterceptor {
           // auto logout if 401 response returned from api
           this.authService.logout();
         }
-
         const error = err.error.message || err.statusText;
         const defaultErrorMessage = 'Sorry, but something went wrong, please try again.';
 

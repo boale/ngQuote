@@ -60,12 +60,12 @@ describe('QuoteComponent', () => {
   });
 
   it('should contain quote text', () => {
-    const quoteText = getBlockquoteTextDebugElement().nativeElement.innerText;
+    const quoteText = getBlockquoteTextDebugElement().nativeElement.textContent;
     expect(quoteText).toContain(mockQuote.text);
   });
 
   it('should contain quote authoe', () => {
-    const quoteAuthor = getQuoteAuthorDebugElement().nativeElement.innerText;
+    const quoteAuthor = getQuoteAuthorDebugElement().nativeElement.textContent;
     expect(quoteAuthor).toContain(mockQuote.author);
   });
 

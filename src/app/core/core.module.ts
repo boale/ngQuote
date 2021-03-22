@@ -9,7 +9,6 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthLayoutComponent, NavigationComponent, PrivateLayoutComponent } from './components';
 import { BasicAuthInterceptor } from './interceptors/basic-auth.interceptor';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { QuoteApiInterceptor } from './interceptors/quote-api.interceptor';
 
 const COMPONENTS = [
   PrivateLayoutComponent,
@@ -22,11 +21,6 @@ const COMPONENTS = [
     ...COMPONENTS,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: QuoteApiInterceptor,
-      multi: true,
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: BasicAuthInterceptor,
