@@ -1,0 +1,25 @@
+@import '~scss/variables';
+
+.app-text-area {
+  width: 100%;
+  font-family: $font, $font__primary, $font__fallback;
+  resize: vertical;
+  border: 2px solid $color__blue_light_dark;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+
+  &:focus {
+    border-color: $color__blue_dark;
+  }
+
+  &.invalid {
+    border-color: $color__error;
+  }
+}
+
+.label-text {
+  font-weight: bold;
+  color: $color__white;
+  font-size: 16px;
+}

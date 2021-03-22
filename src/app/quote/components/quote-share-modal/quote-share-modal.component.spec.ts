@@ -1,31 +1,34 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { NgxSmartModalService } from 'ngx-smart-modal';
-
+import { ContactData } from '../../../models';
+import { ButtonComponent, InputComponent } from '../../../shared/components';
+import { mockNgxSmartModalService } from '../../../stub/ngx-smart-modal-service.mock';
 import { QuotePreviewComponent, QuoteShareModalComponent, ShareFormComponent } from '../../components';
-import { ContactData } from '../../models';
-import { NgxSmartModalServiceMock } from '../../stub';
 
 
 describe('ShareModalComponent', () => {
   let component: QuoteShareModalComponent;
   let fixture: ComponentFixture<QuoteShareModalComponent>;
 
-  const testQuote = { text: 'test quote text', author: 'test' };
+  const testQuote = { id: '1', text: 'test quote text', author: 'test' };
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [ ReactiveFormsModule ],
       declarations: [
+        InputComponent,
+        ButtonComponent,
         QuoteShareModalComponent,
         QuotePreviewComponent,
         ShareFormComponent,
       ],
       providers: [
-        { provide: NgxSmartModalService, useClass: NgxSmartModalServiceMock },
+        mockNgxSmartModalService,
       ],
     })
       .compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(QuoteShareModalComponent);

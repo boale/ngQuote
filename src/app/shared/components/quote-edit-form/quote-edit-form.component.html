@@ -1,0 +1,35 @@
+<form [formGroup]="editQuoteForm" class="edit-form">
+  <app-input
+    label="Author*"
+    [id]="'author'"
+    [form]="editQuoteForm"
+  >
+  </app-input>
+
+  <app-input
+    label="Source*"
+    [id]="'source'"
+    [form]="editQuoteForm"
+  >
+  </app-input>
+
+
+  <app-text-area
+    label="Text*"
+    [id]="'text'"
+    [form]="editQuoteForm"
+  >
+  </app-text-area>
+  <app-quote-tag
+    #quoteTags
+    [initialData]="initialData.tags"
+  >
+  </app-quote-tag>
+
+  <app-button
+    type="submit"
+    [label]="'Submit'"
+    [disabled]="editQuoteForm.invalid"
+    (clicked)="onSubmit()"
+  ></app-button>
+</form>

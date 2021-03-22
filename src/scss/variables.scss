@@ -9,8 +9,17 @@ $font__icons: 'icons';
 $color__black: #000000;
 $color__white: #ffffff;
 $color__blue: #8ccddd;
-$color__blue_light_dark: #7CB6C4;
+$color__blue_light_dark: #7cb6c4;
 $color__blue_dark: #64929E;
+$color__error: #ff7373;
+$color__disabled: #94b2b9;
+$color__light_gray: #c7e6ee;
+//#
+
+$border__size: 2px;
+$border__radius: 10px;
+
+$shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
 
 // breakpoints
 $breakpoint__sm: 320px;

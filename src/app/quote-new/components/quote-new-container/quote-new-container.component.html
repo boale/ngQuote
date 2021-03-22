@@ -1,0 +1,9 @@
+<app-quote-edit-form
+  *ngIf="!(isLoading$ | async) else loader"
+  (submitted)="createQuote($event)"
+>
+</app-quote-edit-form>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

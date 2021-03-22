@@ -1,0 +1,50 @@
+@import "~scss/variables";
+
+:host {
+  display: block;
+  width: 100%;
+
+  ul {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+
+    li {
+      ::ng-deep {
+        a {
+          margin-right: 20px;
+        }
+
+        button {
+          padding: 0;
+          margin: 0;
+        }
+
+        button, a {
+          position: relative;
+          background: transparent;
+          color: $color__white;
+          font-family: $font__primary;
+          font-weight: bold;
+          font-size: 18px;
+
+          &:hover {
+            &:after {
+              position: absolute;
+              content: '';
+              width: 100%;
+              bottom: -5px;
+              left: 0;
+              height: 3px;
+              background-color: $color__blue;
+            }
+          }
+        }
+      }
+
+      &:last-child {
+        margin-left: auto;
+      }
+    }
+  }
+}

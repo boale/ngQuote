@@ -3,31 +3,43 @@
     <label>Share via:&nbsp;</label>
     <div class="toggler-wrapper-options">
       <ng-container *ngFor="let shareOption of shareOptions">
-        <button (click)="selectShareOption(shareOption)"
-                [class.active]="isShareOptionActive(shareOption)">
-          {{ shareOption.title }}
-        </button>
+        <app-button
+          (clicked)="selectShareOption(shareOption)"
+          [label]="shareOption.title"
+          [class.active]="isShareOptionActive(shareOption)"
+        >
+        </app-button>
       </ng-container>
     </div>
     <br/>
   </div>
 
   <div class="form-control-wrapper" *ngIf="selectedShareOption">
-    <label>
-      <input
-        [type]="selectedShareOption.inputType"
-        [formControl]="shareFormControl"
-        [placeholder]="selectedShareOption.placeholder"
-      />
-    </label>
+    <ng-container [formGroup]="form">
+      <label>
+        <app-input
+          [id]="'share'"
+          [type]="selectedShareOption.inputType"
+          [form]="form"
+          [placeholder]="selectedShareOption.placeholder"
+        >
+        </app-input>
+      </label>
+    </ng-container>
   </div>
 </div>
 <div class="button-wrapper">
-  <button
+  <app-button
     type="submit"
-    (click)="submit()"
-    [disabled]="!isShareFormValid">
-    Send
-  </button>
-  <button class="cancel-btn" (click)="dismiss()">Dismiss</button>
+    [disabled]="!isShareFormValid"
+    [label]="'Send'"
+    (clicked)="submit()"
+  >
+  </app-button>
+  <app-button
+    [class]="'cancel-btn'"
+    [label]="'Dismiss'"
+    (clicked)="dismiss()"
+  >
+  </app-button>
 </div>

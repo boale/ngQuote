@@ -1,0 +1,22 @@
+<ng-sidebar-container>
+  <ng-sidebar
+    position="right"
+    showBackdrop="true"
+    [animate]="isAnimated"
+    [(opened)]="opened"
+  >
+    <button class="close-sidebar" (click)="toggleSidebar()"></button>
+    <app-navigation></app-navigation>
+  </ng-sidebar>
+
+  <div ng-sidebar-content>
+    <header>
+      <h1 class="logo"></h1>
+      <app-navigation></app-navigation>
+      <app-burger-button (clicked)="toggleSidebar()"></app-burger-button>
+    </header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</ng-sidebar-container>

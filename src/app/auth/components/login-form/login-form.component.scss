@@ -1,0 +1,18 @@
+@import "~scss/variables";
+
+:host {
+  display: flex;
+  min-height: 100vh;
+  height: 100%;
+  padding: 20px;
+
+  .login-form-wrapper {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+
+    border: $border__size solid #fff;
+    border-radius: $border__radius;
+  }
+}

@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 
+import { ContactData, Quote } from '../../../models';
 import { ModalIds } from '../view.models';
-import { ContactData, Quote } from '../../models';
 
 @Component({
   selector: 'app-share-modal',

@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let navigationItem of navigationItems">
+    <a [routerLink]="navigationItem.path">{{ navigationItem.label }}</a>
+  </li>
+  <li *ngIf="isAuthenticated">
+    <app-button
+      label="Logout"
+      (clicked)="logout()"
+    >
+    </app-button>
+  </li>
+</ul>

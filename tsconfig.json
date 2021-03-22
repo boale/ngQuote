@@ -5,6 +5,7 @@
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "esModuleInterop": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "module": "es2020",

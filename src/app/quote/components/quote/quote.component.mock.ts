@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Quote } from '../../models';
+import { Quote } from '../../../models';
 
 @Component({
   selector: 'app-quote',

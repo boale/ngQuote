@@ -1,0 +1,23 @@
+@import '~scss/variables.scss';
+
+button {
+  background: transparent;
+  border: 2px solid $color__white;
+  border-left: 0;
+  border-right: 0;
+  cursor: pointer;
+  font-size: 0;
+  height: 24px;
+  position: relative;
+  width: 32px;
+
+  &:after {
+    background: $color__white;
+    content: '';
+    height: 2px;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+  }
+}

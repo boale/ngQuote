@@ -1,0 +1,9 @@
+<button
+  class="app-button"
+  [class]="class"
+  [disabled]="disabled"
+  [type]="type"
+  (click)="onClick($event)"
+>
+  <span *ngIf="label" class="app-button__text">{{ label }}</span>
+</button>

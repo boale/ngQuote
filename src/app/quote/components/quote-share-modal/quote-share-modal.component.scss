@@ -10,18 +10,12 @@
 }
 
 ::ng-deep {
-  ngx-smart-modal .overlay {
-    display: flex;
-  }
-
-  .nsm-content {
-    padding: 0;
-    margin: 0;
-  }
-
-  .nsm-dialog {
+  .share-modal {
     max-width: $breakpoint__md;
-    align-self: center;
-    min-height: unset;
+
+    .nsm-content {
+      padding: 0;
+      margin: 0;
+    }
   }
 }

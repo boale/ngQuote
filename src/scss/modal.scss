@@ -1,0 +1,10 @@
+ngx-smart-modal {
+  .overlay {
+    display: flex;
+  }
+
+  .nsm-dialog {
+    align-self: center;
+    min-height: unset;
+  }
+}

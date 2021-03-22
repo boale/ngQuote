@@ -1,0 +1,5 @@
+<app-quotes-list-table
+  [data]="quotes$ | async"
+  (delete)="deleteById($event)"
+>
+</app-quotes-list-table>

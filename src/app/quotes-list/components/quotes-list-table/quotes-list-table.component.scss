@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+}
+
+app-table {
+  display: block;
+  width: 100%;
+  margin: 20px;
+
+  button {
+    background: transparent;
+    margin-right: 10px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  ::ng-deep {
+    table {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,19 @@
+<span class="label-text" *ngIf="tags.length">Tags</span>
+<div [formGroup]="form">
+  <ng-container>
+    <app-input
+      *ngFor="let tag of tags"
+      [hasClearButton]="true"
+      [id]="tag.id"
+      [form]="form"
+      (clear)="deleteTagById($event)"
+    >
+    </app-input>
+
+    <app-button
+      label="Add new tag"
+      (clicked)="addTag()"
+    >
+    </app-button>
+  </ng-container>
+</div>

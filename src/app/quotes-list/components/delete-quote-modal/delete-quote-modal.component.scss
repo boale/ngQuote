@@ -1,0 +1,8 @@
+.button-wrapper {
+  margin-top: 20px;
+  ::ng-deep {
+    app-button:first-child {
+      margin-right: 20px;
+    }
+  }
+}

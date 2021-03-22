@@ -1,0 +1,21 @@
+@import '~scss/variables.scss';
+
+table {
+  border-collapse: collapse;
+
+  th {
+    text-align: left;
+    font-family: $font__primary;
+    color: $color__white;
+    font-size: 16px;
+  }
+
+  th, td {
+    border: 2px solid $color__white;
+    padding: 10px;
+  }
+
+  .no-data-tr {
+    color: $color__white;
+  }
+}

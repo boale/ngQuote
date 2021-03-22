@@ -11,7 +11,7 @@
     "eslint-plugin-jsdoc",
     "eslint-plugin-prefer-arrow",
     "@typescript-eslint",
-    "ordered-imports"
+    "simple-import-sort"
   ],
   "overrides": [
     {
@@ -20,8 +20,7 @@
       ],
       "extends": [
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "plugin:ordered-imports/recommended"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
       ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
@@ -147,6 +146,13 @@
         ],
         "@typescript-eslint/unbound-method": "off",
         "@typescript-eslint/unified-signatures": "error",
+        "@typescript-eslint/no-misused-promises": [
+          "error",
+          {
+            "checksVoidReturn": false,
+            "checksConditionals": false
+          }
+        ],
         "array-bracket-spacing": [
           "error",
           "always"
@@ -296,6 +302,43 @@
           "always"
         ],
         "semi-spacing": "error",
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              [
+                "^@angular/*"
+              ],
+              [
+                "^@ngrx/*"
+              ],
+              [
+                "^[a-z]"
+              ],
+              [
+                "^@lodash.*"
+              ],
+              [
+                "^@env.*"
+              ],
+              [
+                "^@api/*"
+              ],
+              [
+                "^@models*"
+              ],
+              [
+                "^@app.*"
+              ],
+              [
+                "^@[a-z]"
+              ],
+              [
+                "^[.]./*"
+              ]
+            ]
+          }
+        ],
         "space-in-parens": [
           "error",
           "never"
@@ -321,50 +364,6 @@
           }
         ],
         "space-infix-ops": "error",
-        "ordered-imports/ordered-imports": [
-          "error",
-          {
-            "symbols-first": true,
-            "declaration-ordering": [
-              "type",
-              {
-                "ordering": [
-                  "side-effect",
-                  "default",
-                  "namespace",
-                  "destructured"
-                ],
-                "secondaryOrdering": [
-                  "name",
-                  "lowercase-last"
-                ]
-              }
-            ],
-            "specifier-ordering": "any",
-            "group-ordering": [
-              {
-                "name": "angular",
-                "match": "^@angular/*",
-                "order": 10
-              },
-              {
-                "name": "other third parties",
-                "match": "^[a-z]",
-                "order": 30
-              },
-              {
-                "name": "other internal modules",
-                "match": "^@.*",
-                "order": 90
-              },
-              {
-                "name": "relative dir",
-                "match": "^[.]./*",
-                "order": 91
-              }
-            ]
-          }
-        ],
         "space-before-blocks": [
           "error",
           {

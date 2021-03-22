@@ -1,6 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ChangeDetectionStrategy, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 
+import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 import { BehaviorSubject, combineLatest, Observable, of, race, Subject } from 'rxjs';
 import {
   delay,
@@ -11,10 +12,9 @@ import {
   takeUntil,
   tap,
 } from 'rxjs/operators';
-import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 
-import { Quote } from '../../models';
-import { QuoteService } from '../../services';
+import { Quote } from '../../../models';
+import { QuoteService } from '../../../services';
 import { QuoteShareModalComponent } from '../quote-share-modal/quote-share-modal.component';
 import { ModalIds } from '../view.models';
 
@@ -37,6 +37,7 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
   isRefreshBtnClicked$ = this.isRefreshBtnClicked$$.asObservable().pipe(share());
 
   quote$: Observable<Quote> = this.quoteService.quote$;
+  isLoading$ = this.quoteService.isLoading$;
 
   @HostListener('dblclick')
   handleDoubleClick() {
@@ -79,7 +80,9 @@ export class QuoteContainerComponent implements OnInit, OnDestroy {
 
   private createAndOpenShareModalWithData(quote: Quote): NgxSmartModalComponent {
     return this.modalService
-      .create<QuoteShareModalComponent>(ModalIds.quoteShare, QuoteShareModalComponent)
+      .create<QuoteShareModalComponent>(ModalIds.quoteShare, QuoteShareModalComponent, {
+      customClass: 'share-modal',
+    })
       .setData({ quote })
       .open();
   }

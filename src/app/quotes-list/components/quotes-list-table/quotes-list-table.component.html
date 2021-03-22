@@ -1,0 +1,14 @@
+<app-table
+  *ngIf="!(isLoading$ | async); else loader"
+  [tableData]="data"
+  [columns]="columns"
+>
+  <ng-template name="control-cell" let-row>
+    <button (click)="editQuote(row)">Edit</button>
+    <button (click)="deleteQuote(row)">Delete</button>
+  </ng-template>
+</app-table>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

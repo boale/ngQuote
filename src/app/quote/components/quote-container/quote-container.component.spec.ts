@@ -1,12 +1,12 @@
 import { ComponentFixture, inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Observable, of } from 'rxjs';
 
-import { QuoteService } from '../../services';
-import { mockQuoteServiceProvider } from '../../services/quote.service.mock';
-import { NgxSmartModalServiceMock } from '../../stub';
+import { QuoteService } from '../../../services';
+import { mockQuoteServiceProvider } from '../../../services/quote.service.mock';
+import { LoaderComponent } from '../../../shared/components';
+import { mockNgxSmartModalService } from '../../../stub/ngx-smart-modal-service.mock';
 import { MockQuoteComponent } from '../quote/quote.component.mock';
 import { QuoteContainerComponent } from './quote-container.component';
 
@@ -14,14 +14,18 @@ describe('QuoteContainerComponent', () => {
   let component: QuoteContainerComponent;
   let fixture: ComponentFixture<QuoteContainerComponent>;
 
-  const testQuote = { text: 'test quote text', author: 'test' };
+  const testQuote = { id: '1', text: 'test quote text', author: 'test' };
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuoteContainerComponent, MockQuoteComponent ],
+      declarations: [
+        QuoteContainerComponent,
+        MockQuoteComponent,
+        LoaderComponent,
+      ],
       providers: [
         mockQuoteServiceProvider,
-        { provide: NgxSmartModalService, useClass: NgxSmartModalServiceMock },
+        mockNgxSmartModalService,
       ],
       imports: [ NoopAnimationsModule ],
     })
