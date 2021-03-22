@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 
 import { filter, tap } from 'rxjs/operators';
@@ -11,8 +11,9 @@ import { AuthService } from '../../../auth/services';
   styleUrls: [ './private-layout.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PrivateLayoutComponent {
+export class PrivateLayoutComponent implements AfterViewInit{
   opened = false;
+  isAnimated = false;
 
   constructor(
     private authService: AuthService,
@@ -20,6 +21,10 @@ export class PrivateLayoutComponent {
   ) {
     this.listenOnRouteChange();
     this.authService.authData$.subscribe();
+  }
+
+  ngAfterViewInit(): void {
+    this.isAnimated = true;
   }
 
   toggleSidebar() {
@@ -34,5 +39,4 @@ export class PrivateLayoutComponent {
       }),
     ).subscribe();
   }
-
 }

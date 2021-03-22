@@ -2,6 +2,7 @@
   <ng-sidebar
     position="right"
     showBackdrop="true"
+    [animate]="isAnimated"
     [(opened)]="opened"
   >
     <button class="close-sidebar" (click)="toggleSidebar()"></button>

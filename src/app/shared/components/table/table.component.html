@@ -16,6 +16,11 @@
       </ng-container>
     </td>
   </tr>
+  <tr class="no-data-tr">
+    <td [colSpan]="columns.length" *ngIf="!tableData || !tableData.length">
+      No data found.
+    </td>
+  </tr>
 </table>
 
 <ng-template #controlButtons let-row>

@@ -5,6 +5,7 @@
 
 app-table {
   display: block;
+  width: 100%;
   margin: 20px;
 
   button {
@@ -13,6 +14,12 @@ app-table {
 
     &:hover {
       text-decoration: underline;
+    }
+  }
+
+  ::ng-deep {
+    table {
+      width: 100%;
     }
   }
 }
