@@ -11,7 +11,7 @@ import { AuthService } from '../../../auth/services';
   styleUrls: [ './private-layout.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PrivateLayoutComponent implements AfterViewInit{
+export class PrivateLayoutComponent implements AfterViewInit {
   opened = false;
   isAnimated = false;
 
