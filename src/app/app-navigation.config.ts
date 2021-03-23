@@ -6,16 +6,14 @@ export const APP_NAVIGATION_CONFIG: NavigationItem[] = [
   {
     label: 'Home',
     path: [ RoutesPaths.root ],
-    isEnable: true,
   },
   {
     label: 'Quotes list',
     path: [ RoutesPaths.quotes ],
-    isEnable: true,
   },
   {
     label: 'Add quote',
     path: [ RoutesPaths.quotes, RoutesPaths.new ],
-    isEnable: !!environment.apiUrls.quote,
+    isDisabled: !environment.apiUrls.quote,
   },
 ];
