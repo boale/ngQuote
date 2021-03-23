@@ -27,5 +27,5 @@ export class TableComponent {
   @Input() tableData: TableDataSource[] = [];
   @Input() columns: TableHeadColumns[] = [];
 
-  isApiExist = environment.apiUrls.quote;
+  isApiProvided = environment.apiUrls.quote;
 }

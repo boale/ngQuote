@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (!environment.isAuthorizationEnable) {
+    if (!environment.isAuthorizationEnabled) {
       return true;
     }
 

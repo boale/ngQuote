@@ -11,7 +11,7 @@ export class LoginPageGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (!environment.isAuthorizationEnable) {
+    if (!environment.isAuthorizationEnabled) {
       this.router.navigate([ '/' ]);
 
       return false;

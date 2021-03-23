@@ -32,7 +32,7 @@ describe('BasicAuthInterceptor', () => {
   });
 
   it('should add auth headers to request', waitForAsync(inject([ HttpClient, AuthService ], (http, authService) => {
-    environment.isAuthorizationEnable = true;
+    environment.isAuthorizationEnabled = true;
 
     http.get(url).subscribe();
 
@@ -61,7 +61,7 @@ describe('BasicAuthInterceptor', () => {
 
   it('should not add auth headers to request based on env setting',
     waitForAsync(inject([ HttpClient, AuthService ], (http, authService) => {
-      environment.isAuthorizationEnable = false;
+      environment.isAuthorizationEnabled = false;
 
       http.get(url).subscribe();
 

@@ -13,7 +13,7 @@ import { AuthService } from '../../../auth/services';
 export class NavigationComponent {
   navigationItems = APP_NAVIGATION_CONFIG;
   isAuthenticated = !!this.authService.authDataValue;
-  isAuthorizationEnable = environment.isAuthorizationEnable;
+  isAuthorizationEnable = environment.isAuthorizationEnabled;
 
   constructor(
     private authService: AuthService,

@@ -10,7 +10,7 @@ import { AuthService } from '../../auth/services';
 export class BasicAuthInterceptor implements HttpInterceptor {
   private apiBase: string = environment.apiUrls.quote;
   private apiShare: string = environment.apiUrls.share;
-  private isAuthorizationEnable: boolean = environment.isAuthorizationEnable;
+  private isAuthorizationEnable: boolean = environment.isAuthorizationEnabled;
 
   constructor(private authService: AuthService) { }
 

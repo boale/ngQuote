@@ -40,7 +40,7 @@ describe('AuthGuard', () => {
   });
 
   it('should allow navigation', inject([ AuthService ], authService => {
-    environment.isAuthorizationEnable = true;
+    environment.isAuthorizationEnabled = true;
     authService.authData$$.next(mockAuthData);
     expect(guard.canActivate({ url: [] } as any, { url: '' } as any)).toBeTruthy();
   }));

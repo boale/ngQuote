@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  isAuthorizationEnable: false,
+  isAuthorizationEnabled: false,
   apiUrls: {
     auth: '',
     quote: '', // Put here your QUOTE API BASE URL. E.g.: api or https://quote.com/api

@@ -8,7 +8,7 @@
         {{ value }}
       </td>
     </ng-container>
-    <td *ngIf="isApiExist">
+    <td *ngIf="isApiProvided">
       <ng-container
         [ngTemplateOutletContext]="{ $implicit: data }"
         [ngTemplateOutlet]="controlButtons"
