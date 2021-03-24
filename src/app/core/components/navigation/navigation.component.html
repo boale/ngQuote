@@ -1,8 +1,12 @@
 <ul>
-  <li *ngFor="let navigationItem of navigationItems">
-    <a [routerLink]="navigationItem.path">{{ navigationItem.label }}</a>
-  </li>
-  <li *ngIf="isAuthenticated">
+  <ng-container *ngFor="let navigationItem of navigationItems">
+    <li *ngIf="!navigationItem.isDisabled">
+      <a [routerLink]="navigationItem.path">{{ navigationItem.label }}</a>
+    </li>
+  </ng-container>
+  <li *ngIf="isAuthenticated && isAuthorizationEnable"
+      class="logout"
+  >
     <app-button
       label="Logout"
       (clicked)="logout()"

@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { inject, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
+import { environment } from '../../../environments/environment';
 import { AuthLayoutComponent } from '../../core/components';
 import { AuthService } from '../services';
 import { mockAuthServiceProvider } from '../services/auth.service.mock';
@@ -39,6 +40,7 @@ describe('AuthGuard', () => {
   });
 
   it('should allow navigation', inject([ AuthService ], authService => {
+    environment.isAuthorizationEnabled = true;
     authService.authData$$.next(mockAuthData);
     expect(guard.canActivate({ url: [] } as any, { url: '' } as any)).toBeTruthy();
   }));

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { environment } from '../../../../environments/environment';
 import { APP_NAVIGATION_CONFIG } from '../../../app-navigation.config';
 import { AuthService } from '../../../auth/services';
 
@@ -9,16 +10,14 @@ import { AuthService } from '../../../auth/services';
   styleUrls: [ './navigation.component.scss' ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
   navigationItems = APP_NAVIGATION_CONFIG;
   isAuthenticated = !!this.authService.authDataValue;
+  isAuthorizationEnable = environment.isAuthorizationEnabled;
 
   constructor(
     private authService: AuthService,
-  ) { }
-
-  ngOnInit(): void {
-  }
+  ) {}
 
   logout(): void {
     this.authService.logout();

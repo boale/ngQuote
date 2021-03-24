@@ -5,6 +5,7 @@ import { NgxSmartModalComponent, NgxSmartModalService } from 'ngx-smart-modal';
 import { combineLatest, of, race } from 'rxjs';
 import { switchMap, take, tap } from 'rxjs/operators';
 
+import { environment } from '../../../../environments/environment';
 import { RoutesPaths } from '../../../app-routing.config';
 import { ModalIds } from '../../../quote/components/view.models';
 import { QuoteService } from '../../../services';
@@ -21,6 +22,7 @@ import { getQuoteFromTableDataSource } from '../quotes-list-container/quotes-lis
 export class QuotesListTableComponent {
   @Output() delete = new EventEmitter<string>();
   @Input() data: TableDataSource[];
+
   columns: TableHeadColumns[] = [
     {
       label: 'Text',
@@ -30,11 +32,9 @@ export class QuotesListTableComponent {
       label: 'Author',
       key: 'author',
     },
-    {
-      label: 'Action',
-      key: 'action',
-    },
   ];
+
+  isControlCellAvailable = environment.apiUrls.quote;
 
   isLoading$ = this.quoteService.isLoading$;
 
@@ -42,7 +42,14 @@ export class QuotesListTableComponent {
     private router: Router,
     private modalService: NgxSmartModalService,
     private quoteService: QuoteService,
-  ) { }
+  ) {
+    if (this.isControlCellAvailable) {
+      this.columns.push({
+        label: 'Action',
+        key: 'action',
+      });
+    }
+  }
 
   editQuote(row: TableDataSource) {
     const { id } = getQuoteFromTableDataSource(row);

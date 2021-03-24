@@ -9,7 +9,7 @@ import { BasicAuthInterceptor } from './basic-auth.interceptor';
 
 describe('BasicAuthInterceptor', () => {
   let httpMock: HttpTestingController;
-  const url = `${ environment.apiUrls.quote }/test`;
+  const url = `${environment.apiUrls.quote}/test`;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -32,6 +32,8 @@ describe('BasicAuthInterceptor', () => {
   });
 
   it('should add auth headers to request', waitForAsync(inject([ HttpClient, AuthService ], (http, authService) => {
+    environment.isAuthorizationEnabled = true;
+
     http.get(url).subscribe();
 
     const expectedTokenHeader = `${ authService.authDataValue.token_type } ${ authService.authDataValue.access_token }`;
@@ -56,4 +58,18 @@ describe('BasicAuthInterceptor', () => {
       return true;
     });
   })));
+
+  it('should not add auth headers to request based on env setting',
+    waitForAsync(inject([ HttpClient, AuthService ], (http, authService) => {
+      environment.isAuthorizationEnabled = false;
+
+      http.get(url).subscribe();
+
+      httpMock.expectOne(req => {
+        expect(req.url).toBe(url);
+        expect(req.headers.get('Authorization')).toBeNull();
+
+        return true;
+      });
+    })));
 });
