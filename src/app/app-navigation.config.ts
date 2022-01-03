@@ -8,7 +8,7 @@ export const APP_NAVIGATION_CONFIG: NavigationItem[] = [
     path: [ RoutesPaths.root ],
   },
   {
-    label: 'Quotes list',
+    label: 'Quotes list1',
     path: [ RoutesPaths.quotes ],
   },
   {
